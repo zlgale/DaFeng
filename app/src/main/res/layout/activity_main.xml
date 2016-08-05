@@ -7,7 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+<<<<<<< HEAD
     tools:context=".ui.MainActivity">
+=======
+    tools:context="com.zl.dafeng.MainActivity">
+>>>>>>> a87e50d0f097690097b50f2b5d0a44a2cc89cb71
 
     <TextView
         android:layout_width="wrap_content"
