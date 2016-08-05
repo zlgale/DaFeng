@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zl.dafeng.view;
+package com.zl.dafeng.widgetview;
 
 import android.content.Context;
 import android.graphics.Canvas;

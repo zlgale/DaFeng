@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
 =======
         <activity android:name=".MainActivity">
 >>>>>>> a87e50d0f097690097b50f2b5d0a44a2cc89cb71
