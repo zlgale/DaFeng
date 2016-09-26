@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DaFeng.iml" filepath="$PROJECT_DIR$/DaFeng.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/novate/novate.iml" filepath="$PROJECT_DIR$/novate/novate.iml" />
     </modules>
   </component>
 </project>
