@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item >
+        <color android:color="@color/colorPrimary"/>
+    </item>
+
+    <item  android:bottom="90dp">
+        <!-- 图片 -->
+        <bitmap
+
+            android:gravity="center"
+            android:src="@mipmap/guide_img1" />
+    </item>
+
+</layer-list>
