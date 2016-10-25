@@ -38,7 +38,7 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/activityTheme"
+            android:theme="@style/MainTheme"
             android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
