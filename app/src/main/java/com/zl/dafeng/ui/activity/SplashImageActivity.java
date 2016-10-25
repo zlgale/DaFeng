@@ -51,7 +51,6 @@ public class SplashImageActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-        llSplash.setBackgroundResource(R.mipmap.guide_img1);
         init();
     }
 

@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zl.dafeng.ui.widgetview.CustomToast;
-import com.zl.dafeng.util.StatusBarCompat;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -56,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initStatus() {
         //设置状态栏的颜色
-        StatusBarCompat.setStatusBarColor(this);
+//        StatusBarCompat.setStatusBarColor(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
                 | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
