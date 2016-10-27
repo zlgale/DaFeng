@@ -27,18 +27,6 @@ public abstract class BaseFragment extends Fragment {
         this.mActivity = (BaseActivity) activity;
     }
 
-    //添加fragment
-    protected void addFragment(BaseFragment fragment) {
-        if (null != fragment) {
-            getHoldingActivity().addFragment(fragment);
-        }
-    }
-
-    //移除fragment
-    protected void removeFragment() {
-        getHoldingActivity().removeFragment();
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

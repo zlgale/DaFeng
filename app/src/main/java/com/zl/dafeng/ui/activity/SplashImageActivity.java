@@ -45,6 +45,12 @@ public class SplashImageActivity extends BaseActivity {
     };
 
     @Override
+    protected void setTitle() {
+        super.setTitle();
+        setHeadViewVisiable(false);
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.activity_splash_ll;
     }
@@ -52,11 +58,6 @@ public class SplashImageActivity extends BaseActivity {
     @Override
     protected void initialize() {
         init();
-    }
-
-    @Override
-    protected int getFragmentContentId() {
-        return 0;
     }
 
     private void init() {
