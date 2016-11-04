@@ -21,7 +21,7 @@ import java.util.Random;
 
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class  MainActivity extends BaseActivity {
 
 
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};

@@ -5,11 +5,6 @@ import android.widget.Toast;
 
 /**
  * 自定义Toast :多次点击只显示一次
- * 
- * @author tt100_Allen
- * @version [版本号, 2015年8月21日]
- * @see [相关类/方法]
- * @since [产品/模块版本]
  */
 public class CustomToast {
 
