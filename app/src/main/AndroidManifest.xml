@@ -41,6 +41,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activity.BottomBarActivity" />
         <activity android:name=".ui.activity.ViewPagerActivity"></activity>
+        <activity android:name=".ui.activity.TestHttpRequestActivity"></activity>
     </application>
 
 </manifest>

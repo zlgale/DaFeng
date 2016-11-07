@@ -54,7 +54,7 @@ dependencies {
     compile 'me.drakeet.materialdialog:library:1.3.1'
     // 3.时间日历选择器
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
-    // or huozhecompile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
+    // or compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
     // 4.Material icon
     compile 'net.steamcrafted:materialiconlib:1.1.1'
 

@@ -17,8 +17,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.zl.dafeng.net.util.NetworkUtil;
 import com.zl.dafeng.service.crash.CrashHandler;
-import com.zl.dafeng.util.NetworkUtils;
 
 import java.util.List;
 
@@ -62,7 +62,7 @@ public class MyApplication extends Application {
      * @return
      */
     public void getConnType() {
-        mNetWorkState = NetworkUtils.getNetworkState(mcontext);
+        mNetWorkState = NetworkUtil.getNetState(mcontext);
     }
 
 
