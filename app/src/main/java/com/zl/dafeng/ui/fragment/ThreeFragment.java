@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zl.dafeng.R;
-import com.zl.dafeng.ui.activity.TestHttpRequestActivity;
 
 
 @SuppressLint("ValidFragment")

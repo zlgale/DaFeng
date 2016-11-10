@@ -32,7 +32,7 @@ public class OneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fr_simple_card, null);
         TextView card_title_tv = (TextView) v.findViewById(R.id.card_title_tv);
-        card_title_tv.setText("看看BottomBar");
+        card_title_tv.setText("Post请求");
         card_title_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

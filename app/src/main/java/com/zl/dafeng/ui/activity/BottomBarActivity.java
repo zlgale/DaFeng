@@ -1,12 +1,23 @@
 package com.zl.dafeng.ui.activity;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.base.BaseActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class BottomBarActivity extends BaseActivity {
 
+    @BindView(R.id.button)
+    Button button;
+    @BindView(R.id.activity_bottom_bar)
+    RelativeLayout activityBottomBar;
 
     @Override
     protected int getLayout() {
@@ -15,13 +26,11 @@ public class BottomBarActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-
     }
 
     @Override
     protected void setTitle() {
         super.setTitle();
-//        setBackViewVisiable(true);
         setBackViewOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -30,7 +39,7 @@ public class BottomBarActivity extends BaseActivity {
             }
         });
         setTitleText("哈哈");
-        setLeftText("返回");
+        setLeftText("关闭");
         setRightText("右侧");
         setRightTextOnClickListener(new View.OnClickListener() {
 
@@ -39,5 +48,15 @@ public class BottomBarActivity extends BaseActivity {
                 showToast("右侧点击事件");
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.button)
+    public void onClick() {
     }
 }

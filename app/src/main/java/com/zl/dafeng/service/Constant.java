@@ -5,18 +5,11 @@ public class Constant {
     /**
      * 外网正式接口
      */
-//    // 图片前缀
-//    public static final String  IMGURL= "http://api.miaodj.cn";
-//    // 通用地址
-//    public static final String COMMONURL = "http://api.miaodj.cn/index.php/App/";
-
-    /**
-     * 外网测试接口
-     */
     // 图片前缀
-    public static final String  IMGURL= "http://test.miaodj.cn";
+    public static final String  IMGURL= "http://api.miaodj.cn";
     // 通用地址
-    public static final String COMMONURL = "http://test.miaodj.cn/index.php/App/";
+    public static final String COMMONURL = "http://api.miaodj.cn/index.php/App/";
+
     /**
      * 公共接口
      */
@@ -42,6 +35,8 @@ public class Constant {
     public static final String get_address = COMMONURL+"Public/get_address";
     // 版本更新
     public static final String get_android_version = COMMONURL+"ExceptLogin/get_android_version";
+    // 广告图片
+    public static final String ads_img = COMMONURL+"ExceptLogin/first_image";
     /**
      * 业主接口
      */
@@ -54,7 +49,7 @@ public class Constant {
     // 装修案例列表
     public static final String get_store_case = COMMONURL+"ExceptLogin/get_store_case";
     // 装修风格列表
-    public static final String get_case_style = COMMONURL+"ExceptLogin/get_case_style";
+    public static final String get_case_style = "ExceptLogin/get_case_style";
     // 装修案例房型列表
     public static final String get_case_room_list = COMMONURL+"ExceptLogin/get_case_room_list";
     // 装修案例房型列表
