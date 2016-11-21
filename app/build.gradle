@@ -57,6 +57,8 @@ dependencies {
     // or compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
     // 4.Material icon
     compile 'net.steamcrafted:materialiconlib:1.1.1'
+    // 5.Banner 特效
+    compile 'com.bigkoo:convenientbanner:2.0.5'
 
     /**
      * 图片加载
@@ -91,8 +93,11 @@ dependencies {
 
     // ios dialog
     compile 'com.bigkoo:svprogresshud:1.0.2'
+    // NiftyDialogEffects
+    compile 'com.github.sd6352051:NiftyDialogEffects:1.0.0'
     // activity 切换效果
     compile 'com.jude:swipebackhelper:3.1.2'
     // 数据库
     compile 'org.greenrobot:greendao:3.2.0'
+
 }

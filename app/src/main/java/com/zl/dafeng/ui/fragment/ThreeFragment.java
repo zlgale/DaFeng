@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zl.dafeng.R;
+import com.zl.dafeng.ui.activity.ExempleActivity;
 
 
 @SuppressLint("ValidFragment")
@@ -35,7 +36,7 @@ public class ThreeFragment extends Fragment {
         card_title_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), TestHttpRequestActivity.class));
+                startActivity(new Intent(getActivity(), ExempleActivity.class));
             }
         });
         return v;

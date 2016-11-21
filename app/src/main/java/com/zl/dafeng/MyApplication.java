@@ -17,7 +17,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.zl.dafeng.net.util.NetworkUtil;
+import com.zl.dafeng.novate.util.NetworkUtil;
 import com.zl.dafeng.service.crash.CrashHandler;
 
 import java.util.List;
