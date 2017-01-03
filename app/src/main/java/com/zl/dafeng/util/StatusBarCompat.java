@@ -17,8 +17,8 @@ import android.widget.FrameLayout;
  */
 public class StatusBarCompat {
 
-    public static final int COLOR_DEFAULT_TRANSLATE = Color.parseColor("#00000000");
-    public static final int COLOR_DEFAULT_PINK = Color.parseColor("#FF181818");
+    public static final int COLOR_DEFAULT_TRANSLATE = Color.parseColor("#0011cd6e");
+    public static final int COLOR_DEFAULT_PINK = Color.parseColor("#FF11cd6e");
 
     public static void setStatusBarColor(Activity activity, int statusColor) {
         Window window = activity.getWindow();

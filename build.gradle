@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         //这里配置 apt 供butterknife使用
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 

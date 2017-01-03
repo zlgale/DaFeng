@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.zl.dafeng.R;
 
@@ -28,9 +27,9 @@ public class FourFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fr_simple_card, null);
-        TextView card_title_tv = (TextView) v.findViewById(R.id.card_title_tv);
-        card_title_tv.setText(mTitle);
+        View v = inflater.inflate(R.layout.fragment_mine, null);
+//        TextView card_title_tv = (TextView) v.findViewById(R.id.card_title_tv);
+//        card_title_tv.setText(mTitle);
 
         return v;
     }
