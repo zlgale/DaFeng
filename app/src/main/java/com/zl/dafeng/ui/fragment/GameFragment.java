@@ -8,11 +8,11 @@ import com.zl.dafeng.ui.base.BaseFragment;
 
 
 @SuppressLint("ValidFragment")
-public class FourFragment extends BaseFragment {
+public class GameFragment extends BaseFragment {
     private String mTitle;
 
-    public static FourFragment getInstance(String title) {
-        FourFragment sf = new FourFragment();
+    public static GameFragment getInstance(String title) {
+        GameFragment sf = new GameFragment();
         sf.mTitle = title;
         return sf;
     }
@@ -24,7 +24,7 @@ public class FourFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_mine;
+        return R.layout.fragment_game;
     }
 
     @Override

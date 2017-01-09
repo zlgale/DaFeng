@@ -9,27 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt_test"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        />
-
-    <Button
-        android:id="@+id/bt_simple"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Simple"
-        />
-
-    <Button
-        android:id="@+id/bt_get"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Get"
-        />
-
 
     <Button
         android:id="@+id/bt_post"
@@ -50,13 +29,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="DownLoad"
-        />
-
-    <Button
-        android:id="@+id/bt_my_api"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Execute you Api"
         />
 
 
