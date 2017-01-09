@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
-                | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         toolBarView = View.inflate(this, R.layout.toolbar, null);
 
         setTitle();
