@@ -4,7 +4,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
+    android:background="@color/primary_text"
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
     app:layout_collapseMode="pin"
@@ -22,7 +22,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:textSize="16sp"
-        android:visibility="visible" />
+        android:visibility="gone" />
     <TextView
         android:id="@+id/toolBar_title"
         android:layout_width="wrap_content"

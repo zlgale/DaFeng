@@ -1,6 +1,6 @@
-package com.zl.dafeng.service;
+package com.zl.dafeng.dafeng;
 
-public class Constant {
+public class ApiConstant {
 
     /**
      * 外网正式接口

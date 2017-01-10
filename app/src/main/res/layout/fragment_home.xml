@@ -1,23 +1,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tl="http://schemas.android.com/apk/res-auto">
+    android:clipToPadding="true">
 
-    <com.flyco.tablayout.SlidingTabLayout
-        android:id="@+id/sliding_tab"
+    <RelativeLayout
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#222831"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        tl:tl_indicator_color="#393E46"
-        tl:tl_indicator_corner_radius="5dp"
-        tl:tl_indicator_margin_left="2dp"
-        tl:tl_indicator_margin_right="2dp"
-        tl:tl_indicator_style="BLOCK"/>
+        android:layout_height="wrap_content"
+        android:background="@color/primary_text"
+        android:orientation="horizontal">
+
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/sliding_tab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/add_layout"
+            android:background="@color/primary_text"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            tl:tl_indicator_color="@color/coral"
+            tl:tl_indicator_corner_radius="5dp"
+            tl:tl_indicator_margin_left="2dp"
+            tl:tl_indicator_margin_right="2dp"
+            tl:tl_indicator_style="BLOCK"
+            tl:tl_textUnselectColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/add_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            >
+
+            <ImageView
+                android:id="@+id/add_channel_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_add" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/sliding_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/sliding_tab"/>
+        android:layout_below="@+id/sliding_layout" />
 </RelativeLayout>

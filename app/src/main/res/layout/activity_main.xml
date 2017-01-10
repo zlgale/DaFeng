@@ -32,8 +32,8 @@
         android:paddingTop="5dp"
         tl:tl_iconHeight="25dp"
         tl:tl_iconWidth="25dp"
-        tl:tl_textSelectColor="#11cd6e"
-        tl:tl_textUnselectColor="#a9b7b7"
+        tl:tl_textSelectColor="@color/primary_text"
+        tl:tl_textUnselectColor="@color/unselect_color"
         tl:tl_underline_color="#DDDDDD"
         tl:tl_underline_height="1dp" />
 </RelativeLayout>
