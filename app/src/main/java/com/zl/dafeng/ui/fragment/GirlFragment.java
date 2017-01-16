@@ -1,18 +1,22 @@
 package com.zl.dafeng.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.zl.dafeng.R;
+import com.zl.dafeng.ui.activity.ExempleActivity;
 import com.zl.dafeng.ui.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 @SuppressLint("ValidFragment")
@@ -26,6 +30,8 @@ public class GirlFragment extends BaseFragment {
     TextView rightText;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.request)
+    Button request;
     private String mTitle;
 
     @Override
@@ -58,4 +64,9 @@ public class GirlFragment extends BaseFragment {
         return rootView;
     }
 
+    @OnClick(R.id.request)
+    public void onClick() {
+        Intent i = new Intent(getActivity(),ExempleActivity.class);
+        startActivity(i);
+    }
 }

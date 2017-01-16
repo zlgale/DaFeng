@@ -7,7 +7,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ExempleActivity"
     android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_test"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        />
+
+    <Button
+        android:id="@+id/bt_simple"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Simple"
+        />
+
+    <Button
+        android:id="@+id/bt_get"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Get"
+        />
 
 
     <Button
@@ -21,7 +43,14 @@
         android:id="@+id/bt_upload"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Up_Load"
+        android:text="UpLoad Image"
+        />
+
+    <Button
+        android:id="@+id/bt_uploadflie"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="UpLoad Flie"
         />
 
     <Button
@@ -29,6 +58,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="DownLoad"
+        />
+
+    <Button
+        android:id="@+id/bt_download_min"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="DownLoad Min"
+        />
+    <Button
+        android:id="@+id/bt_my_api"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Execute you Api"
         />
 
 
