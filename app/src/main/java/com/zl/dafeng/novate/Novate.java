@@ -223,14 +223,14 @@ public final class Novate {
     private class HandleFuc<T> implements Func1<NovateResponse<T>, T> {
         @Override
         public T call(NovateResponse<T> response) {
-            if (response == null || (response.getData() == null && response.getResult() == null)) {
+            if (response == null || (response.getInfo() == null && response.getResult() == null)) {
                 throw new JsonParseException("后端数据不对");
             }
             /*if (!response.isOk()) {
                 throw new RuntimeException(response.getCode() + "" + response.getMsg() != null ? response.getMsg() : "");
             }
 */
-            return response.getData();
+            return response.getInfo();
         }
     }
 
@@ -1010,7 +1010,7 @@ public final class Novate {
 
             if (isLog) {
                 okhttpBuilder.addNetworkInterceptor(
-                        new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS));
+                        new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
             }
 
             if (sslSocketFactory != null) {
@@ -1179,7 +1179,7 @@ public final class Novate {
                             throw new NullPointerException();
                         }*/
                         baseResponse = new Gson().fromJson(jsStr, finalNeedType);
-                        if (ConfigLoader.isFormat(mContext) && baseResponse.getData() == null & baseResponse.getResult() == null) {
+                        if (ConfigLoader.isFormat(mContext) && baseResponse.getInfo() == null & baseResponse.getResult() == null) {
                             throw new FormatException();
                         }
 

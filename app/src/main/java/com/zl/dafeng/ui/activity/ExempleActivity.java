@@ -298,7 +298,7 @@ public class ExempleActivity extends AppCompatActivity {
 
             @Override
             public void onSuccee(NovateResponse<ResultModel> response) {
-                Toast.makeText(ExempleActivity.this, response.getData().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ExempleActivity.this, response.getInfo().toString(), Toast.LENGTH_SHORT).show();
             }
 
 
@@ -339,11 +339,9 @@ public class ExempleActivity extends AppCompatActivity {
             public void onNext(ResponseBody responseBody) {
 
                 try {
-
-                    String jstr = new String(responseBody.bytes());
+                    String jstr = new String(responseBody.bytes(),"utf-8");
                     AppIntroduce appIntroduce = new Gson().fromJson(jstr,AppIntroduce.class);
-                    Toast.makeText(ExempleActivity.this, "结果---》"+responseBody.string(), Toast.LENGTH_SHORT).show();
-                    Log.e("结果-->",Constant.get_introduce+responseBody.string());
+//                    Toast.makeText(ExempleActivity.this, "结果---》"+responseBody.string(), Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

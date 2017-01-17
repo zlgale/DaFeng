@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.zl.dafeng.novate.Exception.ConfigLoader;
 
-
 /**
  * BaseResponse Data T
  * Created by Tamic on 2016-06-06.
@@ -16,8 +15,7 @@ public class NovateResponse<T> {
     /*错误信息:msg, error, message*/
     private String msg, error, message;
     /*真实数据 data或者result*/
-    private T data, result;
-
+    private T info, result;
 
 
     public int getCode() {
@@ -52,16 +50,12 @@ public class NovateResponse<T> {
         this.msg = msg;
     }
 
-    public T getData() {
-        return data;
+    public T getInfo() {
+        return info;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public boolean isOk(Context context) {
-        return ConfigLoader.checkSucess(context, getCode());
+    public void setInfo(T info) {
+        this.info = info;
     }
 
     public T getResult() {
@@ -79,7 +73,12 @@ public class NovateResponse<T> {
                 ", msg='" + msg + '\'' +
                 ", error='" + error + '\'' +
                 ", message='" + message + '\'' +
-                ", data=" + data +
+                ", info=" + info +
+                ", result=" + result +
                 '}';
+    }
+
+    public boolean isOk(Context context) {
+        return ConfigLoader.checkSucess(context, getCode());
     }
 }
