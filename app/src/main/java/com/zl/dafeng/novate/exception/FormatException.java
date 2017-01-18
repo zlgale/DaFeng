@@ -15,28 +15,26 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.zl.dafeng.novate;
+package com.zl.dafeng.novate.exception;
 
 /**
- * Created by Tamic on 2016-11-03.
+ * Created by  Tamic on 2016-11-04.
  */
 
-public class Throwable extends Exception {
+public class FormatException extends RuntimeException {
 
-    private int code;
-    private String message;
+    public int code = -200;
+    public String message = "服务端返回数据格式异常";
 
-    public Throwable(java.lang.Throwable throwable, int code) {
-        super(throwable);
-        this.code = code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
+    public FormatException() {
     }
 
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     @Override

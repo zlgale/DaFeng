@@ -15,36 +15,31 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.zl.dafeng.novate;
+package com.zl.dafeng.novate.download;
 
 /**
- * Created by Tamic on 2016-11-03.
+ * Created by Tamic on 2016-08-02.
  */
+public abstract class DownLoadCallBack {
 
-public class Throwable extends Exception {
+    public void onStart(String key){}
 
-    private int code;
-    private String message;
+    public void onCancel(){}
 
-    public Throwable(java.lang.Throwable throwable, int code) {
-        super(throwable);
-        this.code = code;
-    }
+    public void onCompleted(){}
 
-    public void setCode(int code) {
-        this.code = code;
-    }
 
-    public int getCode() {
-        return code;
-    }
+    /** Note : the Fun run not MainThred
+     * @param e
+     */
+    abstract public void onError(Throwable e);
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
+    public void onProgress(String key, long fileSizeDownloaded, long  totalSize ){}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    /**  Note : the Fun run UIThred
+     * @param path
+     * @param name
+     * @param fileSize
+     */
+    abstract public void onSucess(String key, String path, String name, long fileSize);
 }

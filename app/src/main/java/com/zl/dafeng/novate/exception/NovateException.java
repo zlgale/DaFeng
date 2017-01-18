@@ -1,4 +1,21 @@
-package com.zl.dafeng.novate.Exception;
+/*
+ *    Copyright (C) 2016 Tamic
+ *
+ *    link :https://github.com/Tamicer/Novate
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+package com.zl.dafeng.novate.exception;
 
 import android.net.ParseException;
 import android.util.Log;
@@ -27,6 +44,7 @@ public class NovateException {
     private static final int SERVICE_UNAVAILABLE = 503;
     private static final int GATEWAY_TIMEOUT = 504;
     private static final int ACCESS_DENIED = 302;
+    private static final int HANDEL_ERRROR = 417;
 
     public static Throwable handleException(java.lang.Throwable e) {
 
@@ -37,23 +55,35 @@ public class NovateException {
             ex = new Throwable(e, ERROR.HTTP_ERROR);
             switch (httpException.code()) {
                 case UNAUTHORIZED:
+                    ex.setMessage("未授权的请求");
                 case FORBIDDEN:
+                    ex.setMessage("禁止访问");
                 case NOT_FOUND:
+                    ex.setMessage("服务器地址未找到");
                 case REQUEST_TIMEOUT:
+                    ex.setMessage("请求超时");
                 case GATEWAY_TIMEOUT:
+                    ex.setMessage("网关响应超时");
                 case INTERNAL_SERVER_ERROR:
+                    ex.setMessage("服务器出错");
                 case BAD_GATEWAY:
+                    ex.setMessage("无效的请求");
                 case SERVICE_UNAVAILABLE:
+                    ex.setMessage("服务器不可用");
                 case ACCESS_DENIED:
-                default:
                     ex.setMessage("网络错误");
+                case HANDEL_ERRROR:
+                    ex.setMessage("接口处理失败");
+                default:
+                    ex.setMessage(e.getMessage());
                     break;
             }
+            ex.setCode(httpException.code());
             return ex;
         } else if (e instanceof ServerException) {
             ServerException resultException = (ServerException) e;
             ex = new Throwable(resultException, resultException.code);
-            ex.setMessage(resultException.message);
+            ex.setMessage(resultException.getMessage());
             return ex;
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
@@ -96,8 +126,9 @@ public class NovateException {
             ex.setMessage(resultException.message);
             return ex;
         } else {
+
             ex = new Throwable(e, ERROR.UNKNOWN);
-            ex.setMessage("未知错误");
+            ex.setMessage(e.getLocalizedMessage());
             return ex;
         }
     }

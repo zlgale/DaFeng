@@ -1,3 +1,20 @@
+/*
+ *    Copyright (C) 2016 Tamic
+ *
+ *    link :https://github.com/Tamicer/Novate
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 package com.zl.dafeng.novate;
 
 
@@ -29,9 +46,9 @@ import rx.Observable;
 public interface BaseApiService {
     @POST()
     @FormUrlEncoded
-    Observable<ResponseBody> executePost(
+    <T> Observable<ResponseBody> executePost(
             @Url() String url,
-            @FieldMap Map<String , String> maps);
+            @FieldMap Map<String, Object> maps);
 
     @POST("{url}")
     Observable<ResponseBody> executePostBody(
@@ -39,19 +56,19 @@ public interface BaseApiService {
             @Body Object object);
 
     @GET()
-    Observable<ResponseBody> executeGet(
+    <T> Observable<ResponseBody> executeGet(
             @Url String url,
-            @QueryMap Map<String, String> maps);
+            @QueryMap Map<String, Object> maps);
 
-    @DELETE("{url}")
-    Observable<ResponseBody> executeDelete(
-            @Path("url") String url,
-            @QueryMap Map<String, String> maps);
+    @DELETE()
+    <T> Observable<ResponseBody> executeDelete(
+            @Url String url,
+            @QueryMap Map<String, Object> maps);
 
-    @PUT("{url}")
-    Observable<ResponseBody> executePut(
-            @Path("url") String url,
-            @QueryMap Map<String, String> maps);
+    @PUT()
+    <T> Observable<ResponseBody> executePut(
+            @Url String url,
+            @FieldMap Map<String, Object> maps);
 
     @Multipart
     @POST()
@@ -66,11 +83,23 @@ public interface BaseApiService {
             @Part("description") RequestBody description,
             @Part("files") MultipartBody.Part file);
 
-    @Multipart
+
     @POST()
     Observable<ResponseBody> uploadFiles(
             @Url() String url,
-            @PartMap() Map<String, RequestBody> maps);
+            @Body Map<String, RequestBody> maps);
+
+    @POST()
+    Observable<ResponseBody> uploadFile(
+            @Url() String url,
+            @Body RequestBody file);
+
+    @Multipart
+    @POST
+    Observable<ResponseBody> uploadFileWithPartMap(
+            @Url() String url,
+            @PartMap() Map<String, RequestBody> partMap,
+            @Part("file") MultipartBody.Part file);
 
     @Streaming
     @GET
@@ -82,20 +111,20 @@ public interface BaseApiService {
 
 
     @GET
-    Observable<ResponseBody> getTest(@Url String fileUrl,
-                                     @QueryMap Map<String, String> maps);
+    <T> Observable<ResponseBody> getTest(@Url String fileUrl,
+                                         @QueryMap Map<String, Object> maps);
 
     @FormUrlEncoded
     @POST()
-    Observable<ResponseBody> postForm(
+    <T> Observable<ResponseBody> postForm(
             @Url() String url,
-            @FieldMap Map<String , Object> maps);
+            @FieldMap Map<String, Object> maps);
 
 
     @POST()
-    Observable<ResponseBody> postJson(
+    Observable<ResponseBody> postRequestBody(
             @Url() String url,
-            @Body RequestBody jsonBody);
+            @Body RequestBody Body);
 
 }
 

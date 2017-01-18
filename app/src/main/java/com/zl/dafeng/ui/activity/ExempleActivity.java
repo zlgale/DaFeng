@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.zl.dafeng.R;
-import com.zl.dafeng.bo.model.AppIntroduce;
 import com.zl.dafeng.bo.model.MovieModel;
 import com.zl.dafeng.bo.model.ResultModel;
 import com.zl.dafeng.bo.model.SouguBean;
@@ -18,7 +17,6 @@ import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.dafeng.MyAPI;
 import com.zl.dafeng.novate.BaseApiService;
 import com.zl.dafeng.novate.BaseSubscriber;
-import com.zl.dafeng.novate.DownLoadCallBack;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.NovateResponse;
 import com.zl.dafeng.novate.Throwable;
@@ -46,7 +44,7 @@ public class ExempleActivity extends AppCompatActivity {
 
     String baseUrl = "http://ip.taobao.com/";
     private Novate novate;
-    private Map<String, String> parameters = new HashMap<String, String>();
+    private Map<String, Object> parameters = new HashMap<String, Object>();
     private Map<String, String> headers = new HashMap<>();
 
     private Button btn, btn_test, btn_get, btn_post, btn_download,
@@ -132,13 +130,11 @@ public class ExempleActivity extends AppCompatActivity {
         btn_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performDown();
             }
         });
         btn_download_Min.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performDownMin();
             }
         });
 
@@ -183,6 +179,7 @@ public class ExempleActivity extends AppCompatActivity {
                         Log.e("OkHttp", e.getMessage());
                         Toast.makeText(ExempleActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+
 
                    /* @Override
                     public void onError(Throwable e) {
@@ -252,7 +249,7 @@ public class ExempleActivity extends AppCompatActivity {
      */
     private void performGet() {
 
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("ip", "21.22.11.33");
         novate = new Novate.Builder(this)
                 .addHeader(headers)
@@ -298,7 +295,7 @@ public class ExempleActivity extends AppCompatActivity {
 
             @Override
             public void onSuccee(NovateResponse<ResultModel> response) {
-                Toast.makeText(ExempleActivity.this, response.getInfo().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ExempleActivity.this, response.getData().toString(), Toast.LENGTH_SHORT).show();
             }
 
 
@@ -311,11 +308,12 @@ public class ExempleActivity extends AppCompatActivity {
      */
     private void performPost() {
 
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, Object> parameters = new HashMap<String, Object>();
 //        parameters.put("ip", "21.22.11.33");
-        Novate novat = new Novate.Builder(this)
+        Novate novate = new Novate.Builder(this)
                 .connectTimeout(8)
                 .baseUrl(Constant.COMMONURL)
+                //.addApiManager(ApiManager.class)
                 .addLog(true)
                 .build();
 
@@ -327,7 +325,7 @@ public class ExempleActivity extends AppCompatActivity {
          * 如果需要解析后返回 则调用novate.executeGet()
          * 参考 performGet()中的方式
          */
-        novat.post(Constant.get_introduce, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
+        novate.post(Constant.get_introduce, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
 
             @Override
             public void onError(Throwable e) {
@@ -339,9 +337,13 @@ public class ExempleActivity extends AppCompatActivity {
             public void onNext(ResponseBody responseBody) {
 
                 try {
-                    String jstr = new String(responseBody.bytes(),"utf-8");
-                    AppIntroduce appIntroduce = new Gson().fromJson(jstr,AppIntroduce.class);
-//                    Toast.makeText(ExempleActivity.this, "结果---》"+responseBody.string(), Toast.LENGTH_SHORT).show();
+                    String jstr = new String(responseBody.bytes());
+//
+//                    Type type = new TypeToken<NovateResponse<ResultModel>>() {
+//                    }.getType();
+//
+//                    NovateResponse<ResultModel> response = new Gson().fromJson(jstr, type);
+//                    Toast.makeText(ExempleActivity.this, response.getData().toString(), Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -492,87 +494,6 @@ public class ExempleActivity extends AppCompatActivity {
 
             }
         } );
-    }
-
-    /**
-     * performDown file
-     * ex: apk , video...
-     */
-    private void performDown() {
-        String downUrl = "http://apk.hiapk.com/web/api.do?qt=8051&id=723";
-        novate.download(downUrl, new DownLoadCallBack() {
-
-            @Override
-            public void onStart() {
-                super.onStart();
-                Toast.makeText(ExempleActivity.this, "download is start", Toast.LENGTH_SHORT).show();
-                btn_download.setText("DownLoad cancel");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onCancel() {
-                super.onCancel();
-                btn_download.setText("DownLoad start");
-            }
-
-            @Override
-            public void onProgress(long fileSizeDownloaded) {
-                super.onProgress(fileSizeDownloaded);
-
-            }
-
-            @Override
-            public void onSucess(String path, String name, long fileSize) {
-                Toast.makeText(ExempleActivity.this, "download  onSucess", Toast.LENGTH_SHORT).show();
-                btn_download.setText("DownLoad start");
-            }
-        });
-    }
-
-    /**
-     * performDown small file
-     * ex: image txt
-     */
-    private void performDownMin() {
-
-        String downUrl = "http://img06.tooopen.com/images/20161022/tooopen_sy_182719487645.jpg";
-        novate.downloadMin(downUrl, new DownLoadCallBack() {
-
-            @Override
-            public void onStart() {
-                super.onStart();
-                Toast.makeText(ExempleActivity.this, "download is start", Toast.LENGTH_SHORT).show();
-                btn_download.setText("DownLoadMin cancel");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onCancel() {
-                super.onCancel();
-                btn_download.setText("DownLoadMin start");
-            }
-
-            @Override
-            public void onProgress(long fileSizeDownloaded) {
-                super.onProgress(fileSizeDownloaded);
-
-            }
-
-            @Override
-            public void onSucess(String path, String name, long fileSize) {
-                Toast.makeText(ExempleActivity.this, "download  onSucess", Toast.LENGTH_SHORT).show();
-                btn_download.setText("DownLoadMin start");
-            }
-        });
     }
 
 }
