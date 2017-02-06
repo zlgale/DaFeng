@@ -19,10 +19,10 @@ package com.zl.dafeng.novate;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import com.orhanobut.logger.Logger;
 import com.zl.dafeng.novate.cache.CookieCacheImpl;
 import com.zl.dafeng.novate.config.ConfigLoader;
 import com.zl.dafeng.novate.cookie.NovateCookieManager;
@@ -176,7 +176,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
         return (T) apiManager.executeGet(url, maps)
                 .compose(schedulersTransformer)
                 .compose(handleErrTransformer())
@@ -187,7 +187,7 @@ public final class Novate {
      * MethodHandler
      */
     private List<Type> MethodHandler(Type[] types) {
-        Log.d(TAG, "types size: " + types.length);
+        Logger.d(TAG, "types size: " + types.length);
         List<Type> needtypes = new ArrayList<>();
         Type needParentType = null;
 
@@ -196,9 +196,9 @@ public final class Novate {
             // if Type is T
             if (paramType instanceof ParameterizedType) {
                 Type[] parentypes = ((ParameterizedType) paramType).getActualTypeArguments();
-                Log.d(TAG, "TypeArgument: ");
+                Logger.d(TAG, "TypeArgument: ");
                 for (Type childtype : parentypes) {
-                    Log.d(TAG, "childtype:" + childtype);
+                    Logger.d(TAG, "childtype:" + childtype);
                     needtypes.add(childtype);
                     //needParentType = childtype;
                     if (childtype instanceof ParameterizedType) {
@@ -206,7 +206,7 @@ public final class Novate {
                         for (Type type : childtypes) {
                             needtypes.add(type);
                             //needChildType = type;
-                            Log.d(TAG, "type:" + childtype);
+                            Logger.d(TAG, "type:" + childtype);
                         }
                     }
                 }
@@ -338,7 +338,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
 
         return (T) apiManager.executePost(url, parameters)
                 .compose(schedulersTransformer)
@@ -373,7 +373,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
 
         return (T) apiManager.postForm(url, fields)
                 .compose(schedulersTransformer)
@@ -408,7 +408,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
 
         return (T) apiManager.executePostBody(url, body)
                 .compose(schedulersTransformer)
@@ -446,7 +446,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
         return (T) apiManager.postRequestBody(url, Utils.createJson(jsonStr))
                 .compose(schedulersTransformer)
                 .compose(handleErrTransformer())
@@ -481,7 +481,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
         return (T) apiManager.executeDelete(url, (Map<String, Object>) maps)
                 .compose(schedulersTransformer)
                 .compose(handleErrTransformer())
@@ -517,7 +517,7 @@ public final class Novate {
             return null;
         }
         final Type finalNeedType = MethodHandler(types).get(0);
-        Log.d(TAG, "-->:" + "Type:" + types[0]);
+        Logger.d(TAG, "-->:" + "Type:" + types[0]);
         return (T) apiManager.executePut(url, (Map<String, Object>) parameters)
                 .compose(schedulersTransformer)
                 .compose(handleErrTransformer())
@@ -1155,7 +1155,7 @@ public final class Novate {
                     addCache(cache);
 
                 } catch (Exception e) {
-                    Log.e("OKHttp", "Could not create http cache", e);
+                    Logger.e("OKHttp", "Could not create http cache", e);
                 }
                 if (cache == null) {
                     cache = new Cache(httpCacheDirectory, caheMaxSize);
@@ -1281,7 +1281,7 @@ public final class Novate {
             try {
                 byte[] bytes = responseBody.bytes();
                 String jsStr = new String(bytes);
-                Log.d("OkHttp", "ResponseBody:" + jsStr);
+                Logger.d("OkHttp", "ResponseBody:" + jsStr);
                 if (callBack != null) {
                     try {
                         /**
@@ -1290,7 +1290,6 @@ public final class Novate {
                          *  callBack.onSuccee((T) JSON.parseArray(jsStr, (Class<Object>) finalNeedType));
                          *  Type finalNeedType = needChildType;
                          */
-
                         NovateResponse<T> baseResponse = null;
 
                         if (new Gson().fromJson(jsStr, finalNeedType) == null) {

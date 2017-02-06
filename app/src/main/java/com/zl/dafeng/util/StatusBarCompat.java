@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
 public class StatusBarCompat {
 
     public static final int COLOR_DEFAULT_TRANSLATE = Color.parseColor("#0011cd6e");
-    public static final int COLOR_DEFAULT_PINK = Color.parseColor("#FF11cd6e");
+    public static final int COLOR_DEFAULT_StatusBar = Color.parseColor("#FF14619C");
 
     public static void setStatusBarColor(Activity activity, int statusColor) {
         Window window = activity.getWindow();
@@ -109,7 +109,7 @@ public class StatusBarCompat {
 
 
     public static void setStatusBarColor(Activity activity) {
-        setStatusBarColor(activity, COLOR_DEFAULT_PINK);
+        setStatusBarColor(activity, COLOR_DEFAULT_StatusBar);
     }
 
     //Get status bar height

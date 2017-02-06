@@ -57,8 +57,6 @@ public class ExempleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exemple);
         // UI referen
-        btn = (Button) findViewById(R.id.bt_simple);
-        btn_test = (Button) findViewById(R.id.bt_test);
         btn_get = (Button) findViewById(R.id.bt_get);
         btn_post = (Button) findViewById(R.id.bt_post);
         btn_download = (Button) findViewById(R.id.bt_download);
@@ -325,7 +323,7 @@ public class ExempleActivity extends AppCompatActivity {
          * 如果需要解析后返回 则调用novate.executeGet()
          * 参考 performGet()中的方式
          */
-        novate.post(Constant.get_introduce, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
+        novate.post(Constant.get_bellePic, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
 
             @Override
             public void onError(Throwable e) {

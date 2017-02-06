@@ -1,18 +1,15 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/toolbar"/>
 
-    <Button
-        android:id="@+id/request"
+    <include layout="@layout/toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/belle_recycview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blueviolet"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        />
-</RelativeLayout>
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

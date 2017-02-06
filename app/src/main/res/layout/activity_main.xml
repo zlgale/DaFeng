@@ -32,7 +32,7 @@
         android:paddingTop="5dp"
         tl:tl_iconHeight="25dp"
         tl:tl_iconWidth="25dp"
-        tl:tl_textSelectColor="@color/primary_text"
+        tl:tl_textSelectColor="@color/toolbar_color"
         tl:tl_textUnselectColor="@color/unselect_color"
         tl:tl_underline_color="#DDDDDD"
         tl:tl_underline_height="1dp" />

@@ -20,6 +20,7 @@ package com.zl.dafeng.novate;
 import android.content.Context;
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
 import com.zl.dafeng.novate.exception.NovateException;
 
 import rx.Subscriber;
@@ -40,10 +41,10 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
     final public void onError(java.lang.Throwable e) {
         Log.v("Novate", e.getMessage());
         if(e instanceof Throwable){
-            Log.e("Novate", "--> e instanceof Throwable");
+            Logger.e("Novate", "--> e instanceof Throwable");
             onError((Throwable)e);
         } else {
-            Log.e("Novate", "e !instanceof Throwable");
+            Logger.e("Novate", "e !instanceof Throwable");
             onError(new Throwable(e, NovateException.ERROR.UNKNOWN));
         }
     }
@@ -51,14 +52,14 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
     @Override
     public void onStart() {
         super.onStart();
-        Log.v("Novate", "-->http is start");
+        Logger.v("Novate", "-->http is start");
         // todo some common as show loadding  and check netWork is NetworkAvailable
         // if  NetworkAvailable no !   must to call onCompleted
     }
 
     @Override
     public void onCompleted() {
-        Log.v("Novate", "-->http is Complete");
+        Logger.v("Novate", "-->http is Complete");
         // todo some common as  dismiss loadding
     }
     public abstract void onError(Throwable e);

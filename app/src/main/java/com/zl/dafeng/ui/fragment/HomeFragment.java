@@ -26,8 +26,8 @@ public class HomeFragment extends BaseFragment implements OnTabSelectListener {
     ViewPager slidingVp;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
-            "热门", "iOS", "Android"
-            , "前端", "后端", "设计", "工具资源"
+            "美女", "大胸妹", "小清新"
+            , "文艺范", "性感妹", "大长腿", "黑丝袜","小翘臀"
     };
     private MyPagerAdapter mAdapter;
 
@@ -44,7 +44,7 @@ public class HomeFragment extends BaseFragment implements OnTabSelectListener {
     @Override
     protected void initData() {
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance(title));
+            mFragments.add(CardFragment.getInstance(title));
         }
     }
 

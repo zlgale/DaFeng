@@ -16,7 +16,7 @@ import com.flyco.tablayout.widget.MsgView;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.base.BaseActivity;
 import com.zl.dafeng.ui.entity.TabEntity;
-import com.zl.dafeng.ui.fragment.SimpleCardFragment;
+import com.zl.dafeng.ui.fragment.CardFragment;
 import com.zl.dafeng.util.ViewFindUtils;
 
 import java.util.ArrayList;
@@ -59,8 +59,8 @@ public class ViewPagerActivity extends BaseActivity {
     @Override
     protected void initialize() {
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance("ViewPager setCurrentItem false 不闪烁" + title));
-            mFragments2.add(SimpleCardFragment.getInstance("Switch Fragment " + title));
+            mFragments.add(CardFragment.getInstance("ViewPager setCurrentItem false 不闪烁" + title));
+            mFragments2.add(CardFragment.getInstance("Switch Fragment " + title));
         }
 
 

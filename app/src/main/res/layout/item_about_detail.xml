@@ -15,8 +15,27 @@
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="个人网站"/>
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
-            android:text="大风起兮云飞扬"/>
+            android:textSize="14sp"
+            android:text="www.8sento.com"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="Github"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:text="https://github.com/zldafeng"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

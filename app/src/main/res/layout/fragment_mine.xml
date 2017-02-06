@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             app:collapsedTitleGravity="center"
-            app:contentScrim="@color/primary_text"
+            app:contentScrim="@color/toolbar_color"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 

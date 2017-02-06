@@ -11,9 +11,9 @@ import com.zl.dafeng.R;
 import com.zl.dafeng.ui.base.BaseActivity;
 import com.zl.dafeng.ui.entity.TabEntity;
 import com.zl.dafeng.ui.fragment.MineFragment;
-import com.zl.dafeng.ui.fragment.GirlFragment;
+import com.zl.dafeng.ui.fragment.VideoFragment;
 import com.zl.dafeng.ui.fragment.HomeFragment;
-import com.zl.dafeng.ui.fragment.GameFragment;
+import com.zl.dafeng.ui.fragment.GirlFragment;
 
 import java.util.ArrayList;
 
@@ -27,13 +27,11 @@ public class MainActivity extends BaseActivity {
     FrameLayout frameLayout;
     @BindView(R.id.content_view)
     CommonTabLayout contentView;
-    private String[] mTitles = {"首页", "美女", "游戏", "我的"};
-    private int[] mIconUnselectIds = {
-            R.mipmap.tab_home_unselect, R.mipmap.tab_girl_unselect2,
-            R.mipmap.tab_game_unselect, R.mipmap.tab_mine_unselect};
-    private int[] mIconSelectIds = {
-            R.mipmap.tab_home_select, R.mipmap.tab_girl_select2,
-            R.mipmap.tab_game_select, R.mipmap.tab_mine_select};
+    private String[] mTitles = {"新闻", "美女", "视频", "我的"};
+    private int[] mIconUnselectIds = {R.mipmap.tab_news_unselect, R.mipmap.tab_girl_unselect, R.mipmap.tab_video_unselect,
+            R.mipmap.tab_mine_unselect};
+    private int[] mIconSelectIds = {R.mipmap.tab_news_select, R.mipmap.tab_girl_select, R.mipmap.tab_video_select,
+            R.mipmap.tab_mine_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private ArrayList<Fragment> allFragments = new ArrayList<>();
 
@@ -52,7 +50,7 @@ public class MainActivity extends BaseActivity {
     protected void initialize() {
         allFragments.add(new HomeFragment());
         allFragments.add(new GirlFragment());
-        allFragments.add(new GameFragment());
+        allFragments.add(new VideoFragment());
         allFragments.add(new MineFragment());
 
         for (int i = 0; i < mTitles.length; i++) {

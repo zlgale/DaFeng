@@ -5,6 +5,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
 
+    <color name="statusbar_color">#14619C</color>
+    <color name="toolbar_color">#29A0F6</color>
+    <color name="container_background">#EBEBEB</color>
+
+
+    <color name="gray_deep">#c9000000</color>
+
     <color name="primary_text">#11cd6e</color>
     <color name="Lime">#00FF88</color>
 
@@ -120,7 +127,6 @@
     <color name="olivedrab">#6B8E23</color> <!--深绿褐色 -->
     <color name="slateblue">#6A5ACD</color> <!--石蓝色 -->
     <color name="dimgray">#696969</color> <!--暗灰色 -->
-    <color name="dimgrey">#696969</color> <!--暗灰色 -->
     <color name="mediumaquamarine">#66CDAA</color> <!--中绿色 -->
     <color name="cornflowerblue">#6495ED</color> <!--菊兰色 -->
     <color name="cadetblue">#5F9EA0</color> <!--军兰色 -->

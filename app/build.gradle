@@ -20,6 +20,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //设置虚拟机堆内存空间大小，避免在编译期间OOM
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -46,6 +56,11 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 
+    /**
+     * 鸿洋通用Adapter
+     */
+    compile 'com.zhy:base-rvadapter:3.0.3' //ForRecyclerView
+    compile 'com.zhy:base-adapter:3.0.3'  //ForListView
     /**
      * MaterialDesign UI
      */
@@ -104,4 +119,7 @@ dependencies {
 
 //    compile 'com.tamic.novate:novate:1.2+'
     compile 'com.alibaba:fastjson:1.1.56.android'
+    // Log日志打印
+    compile 'com.orhanobut:logger:1.15'
+//    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }

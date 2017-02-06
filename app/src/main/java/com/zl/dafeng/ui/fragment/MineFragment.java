@@ -55,7 +55,7 @@ public class MineFragment extends BaseFragment {
     protected void initView() {
         toolbarLayout.setTitle("关于大风");
         //通过CollapsingToolbarLayout修改字体颜色
-        toolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.primary_text));//设置还没收缩时状态下字体颜色
+        toolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.toolbar_color));//设置还没收缩时状态下字体颜色
         toolbarLayout.setCollapsedTitleTextColor(Color.WHITE);//设置收缩后Toolbar上字体的颜色
     }
 

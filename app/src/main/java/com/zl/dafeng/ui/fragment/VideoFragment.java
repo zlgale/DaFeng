@@ -1,22 +1,27 @@
 package com.zl.dafeng.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.zl.dafeng.R;
+import com.zl.dafeng.ui.activity.ExempleActivity;
 import com.zl.dafeng.ui.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 @SuppressLint("ValidFragment")
-public class GameFragment extends BaseFragment {
+public class VideoFragment extends BaseFragment {
+
     @BindView(R.id.left_text)
     TextView leftText;
     @BindView(R.id.toolBar_title)
@@ -25,13 +30,9 @@ public class GameFragment extends BaseFragment {
     TextView rightText;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.request)
+    Button request;
     private String mTitle;
-
-    public static GameFragment getInstance(String title) {
-        GameFragment sf = new GameFragment();
-        sf.mTitle = title;
-        return sf;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,9 @@ public class GameFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_game;
+        return R.layout.fragment_video;
     }
+
 
     @Override
     protected void initData() {
@@ -50,7 +52,8 @@ public class GameFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        toolBarTitle.setText(getString(R.string.game_title));
+        leftText.setVisibility(View.GONE);
+        toolBarTitle.setText(getString(R.string.video_title));
     }
 
     @Override
@@ -59,5 +62,11 @@ public class GameFragment extends BaseFragment {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @OnClick(R.id.request)
+    public void onClick() {
+        Intent i = new Intent(getActivity(),ExempleActivity.class);
+        startActivity(i);
     }
 }

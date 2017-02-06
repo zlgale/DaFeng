@@ -40,8 +40,9 @@
             android:theme="@style/MainTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activity.BottomBarActivity" />
-        <activity android:name=".ui.activity.ViewPagerActivity"></activity>
-        <activity android:name=".ui.activity.ExempleActivity"></activity>
+        <activity android:name=".ui.activity.ViewPagerActivity" />
+        <activity android:name=".ui.activity.ExempleActivity" />
+        <activity android:name=".ui.activity.NewsChannelActivity"></activity>
     </application>
 
 </manifest>

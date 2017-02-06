@@ -8,7 +8,7 @@
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_text"
+        android:background="@color/toolbar_color"
         android:orientation="horizontal">
 
 
@@ -16,34 +16,15 @@
             android:id="@+id/sliding_tab"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_toLeftOf="@+id/add_layout"
-            android:background="@color/primary_text"
+            android:background="@color/toolbar_color"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            tl:tl_indicator_color="@color/coral"
+            tl:tl_indicator_color="@color/gray"
             tl:tl_indicator_corner_radius="5dp"
             tl:tl_indicator_margin_left="2dp"
             tl:tl_indicator_margin_right="2dp"
             tl:tl_indicator_style="BLOCK"
             tl:tl_textUnselectColor="@color/white" />
-
-        <LinearLayout
-            android:id="@+id/add_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="right"
-            >
-
-            <ImageView
-                android:id="@+id/add_channel_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="10dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_add" />
-        </LinearLayout>
 
     </RelativeLayout>
 
