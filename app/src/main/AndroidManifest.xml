@@ -39,10 +39,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/MainTheme"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.activity.BottomBarActivity" />
-        <activity android:name=".ui.activity.ViewPagerActivity" />
-        <activity android:name=".ui.activity.ExempleActivity" />
-        <activity android:name=".ui.activity.NewsChannelActivity"></activity>
+        <activity
+            android:name=".ui.activity.BottomBarActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.ViewPagerActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.ExempleActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.NewsChannelActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

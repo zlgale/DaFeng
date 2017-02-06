@@ -1,8 +1,8 @@
 package com.zl.dafeng.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +22,7 @@ import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
 import com.zl.dafeng.ui.adapter.BelleAdapter;
+import com.zl.dafeng.ui.adapter.MyDividerItemDecoration;
 import com.zl.dafeng.ui.base.BaseFragment;
 
 import java.io.IOException;
@@ -64,12 +65,38 @@ public class GirlFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        // 设置线性布局
         belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        // 设置网格布局
 //        belleRecycview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+//        // 设置瀑布流布局
 //        belleRecycview.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        /**
+         *  鸿洋分割线
+         */
+
+//        belleRecycview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        /**
+         * 万能分割线
+         * http://blog.csdn.net/pengkv/article/details/50538121
+         */
+        /**
+         * 我的分割线
+         *
+         */
+        belleRecycview.addItemDecoration(new MyDividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL, Color.RED,5));
+        // 1、添加默认分割线：高度为2px，颜色为灰色
+//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL));
+        // 2、添加自定义分割线：可自定义分割线drawable
+//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL,R.drawable.divider_bg));
+        // 3、添加自定义分割线：可自定义分割线高度和颜色
+//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, 10, getActivity().getResources().getColor(R.color.red)));
+//        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         //设置Item增加、移除动画
-        belleRecycview.setItemAnimator(new DefaultItemAnimator());
+//        belleRecycview.setItemAnimator(new DefaultItemAnimator());
+
+
         belleAdapter = new BelleAdapter(getActivity(), NewslistBeanList);
         belleRecycview.setAdapter(belleAdapter);
         getBellePic();
