@@ -51,6 +51,9 @@
         <activity
             android:name=".ui.activity.NewsChannelActivity"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ui.activity.MineActivity"
+            ></activity>
     </application>
 
 </manifest>

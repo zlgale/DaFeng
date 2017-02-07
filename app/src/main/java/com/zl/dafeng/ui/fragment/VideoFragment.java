@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.activity.ExempleActivity;
 import com.zl.dafeng.ui.base.BaseFragment;
+import com.zl.dafeng.ui.widgetview.GiftRainView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +33,10 @@ public class VideoFragment extends BaseFragment {
     Toolbar toolbar;
     @BindView(R.id.request)
     Button request;
+    @BindView(R.id.dropview)
+    GiftRainView dropview;
     private String mTitle;
+    private boolean isStart;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,30 @@ public class VideoFragment extends BaseFragment {
     protected void initView() {
         leftText.setVisibility(View.GONE);
         toolBarTitle.setText(getString(R.string.video_title));
+
+        dropview.setImages(R.mipmap.ico_money, R.mipmap.ico_gold_money);
+        startRain();
+
+        dropview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isStart) {
+                    stopRain();
+                } else {
+                    startRain();
+                }
+            }
+        });
+    }
+
+    private void startRain() {
+        dropview.startRain();
+        isStart = true;
+    }
+
+    private void stopRain() {
+        dropview.stopRainDely();
+        isStart = false;
     }
 
     @Override
@@ -66,7 +94,7 @@ public class VideoFragment extends BaseFragment {
 
     @OnClick(R.id.request)
     public void onClick() {
-        Intent i = new Intent(getActivity(),ExempleActivity.class);
+        Intent i = new Intent(getActivity(), ExempleActivity.class);
         startActivity(i);
     }
 }

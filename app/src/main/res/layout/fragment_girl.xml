@@ -1,17 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/belle_recycview"
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/belle_recycview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
-
-    </android.support.v7.widget.RecyclerView>
-
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@mipmap/ic_arrow_upward"
+        app:backgroundTint="@color/fab_color"
+        app:layout_behavior="com.jaydenxiao.androidfire.widget.ScrollAwareFABBehavior" />
 </LinearLayout>

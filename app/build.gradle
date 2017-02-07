@@ -56,11 +56,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 
-    /**
-     * 鸿洋通用Adapter
-     */
-    compile 'com.zhy:base-rvadapter:3.0.3' //ForRecyclerView
-    compile 'com.zhy:base-adapter:3.0.3'  //ForListView
+    compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
     /**
      * MaterialDesign UI
      */
@@ -103,6 +99,7 @@ dependencies {
      * FlycoTabLayout
      */
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+    compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
     /**
      * BottomBar
      */
