@@ -11,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zl.dafeng.R;
 import com.zl.dafeng.service.interfaces.AppBarStateChangeListener;
 import com.zl.dafeng.ui.activity.MineActivity;
 import com.zl.dafeng.ui.base.BaseFragment;
+import com.zl.dafeng.ui.widgetview.WindSnowView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +40,11 @@ public class MineFragment extends BaseFragment {
     TextView fragmentMineToolBarTitle;
     @BindView(R.id.fragment_mine_right_text)
     TextView fragmentMineRightText;
+    @BindView(R.id.windsnow_fly)
+    WindSnowView windsnowFly;
 
     private String mShareLink = "github";
+    private boolean isSnowOrMoney = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,12 +78,16 @@ public class MineFragment extends BaseFragment {
                     collapsingLayoutFragmentMine.setTitle("展开");
                     fragmentMineToolBarTitle.setAlpha(0);
                     fragmentMineRightText.setAlpha(0);
+                    windsnowFly.setImages(R.mipmap.snowflake);
+
+                    windsnowFly.startAnimation();
                 } else if (state == State.COLLAPSED) {
 
                     //折叠状态
 //                    collapsingLayoutFragmentMine.setTitle("折叠");
                     fragmentMineToolBarTitle.setAlpha(1);
                     fragmentMineRightText.setAlpha(1);
+                    windsnowFly.stopAnimationDely();
                 } else {
 
                     //中间状态
@@ -102,7 +111,7 @@ public class MineFragment extends BaseFragment {
         return rootView;
     }
 
-    @OnClick({R.id.my_head,R.id.fragment_mine_right_text})
+    @OnClick({R.id.my_head, R.id.fragment_mine_right_text, R.id.windsnow_fly})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.my_head:
@@ -110,6 +119,15 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.fragment_mine_right_text:
                 startActivity(new Intent(getActivity(), MineActivity.class));
+                break;
+            case R.id.windsnow_fly:
+                if (isSnowOrMoney == false) {
+                    windsnowFly.setImages(R.mipmap.ico_gold_money);
+                    isSnowOrMoney = true;
+                } else {
+                    windsnowFly.setImages(R.mipmap.snowflake);
+                    isSnowOrMoney = false;
+                }
                 break;
         }
     }

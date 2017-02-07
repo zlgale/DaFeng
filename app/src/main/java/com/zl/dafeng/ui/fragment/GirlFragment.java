@@ -67,18 +67,6 @@ public class GirlFragment extends BaseFragment {
         belleRecycview.smoothOpenLeftMenu(0);
         belleRecycview.smoothOpenRightMenu(0);
         belleRecycview.setLayoutManager(new GridLayoutManager(getActivity(),2));
-//        belleRecycview.addItemDecoration(new MyDividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL, Color.RED, 5));
-        // 1、添加默认分割线：高度为2px，颜色为灰色
-//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL));
-        // 2、添加自定义分割线：可自定义分割线drawable
-//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL,R.drawable.divider_bg));
-        // 3、添加自定义分割线：可自定义分割线高度和颜色
-//        belleRecycview.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, 10, getActivity().getResources().getColor(R.color.red)));
-//        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //设置Item增加、移除动画
-//        belleRecycview.setItemAnimator(new DefaultItemAnimator());
-
 
         belleAdapter = new BelleAdapter(getActivity(), NewslistBeanList);
         belleRecycview.setAdapter(belleAdapter);

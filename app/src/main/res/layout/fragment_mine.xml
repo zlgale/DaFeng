@@ -23,18 +23,20 @@
             android:background="@color/primary_color"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <!--<ImageView-->
-                <!--android:id="@+id/icon_mine"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:fitsSystemWindows="true"-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:src="@mipmap/mine"-->
-                <!--app:layout_collapseMode="parallax"-->
-                <!--app:layout_collapseParallaxMultiplier="0.7"-->
-                <!--tools:targetApi="lollipop" />-->
+            <com.zl.dafeng.ui.widgetview.WindSnowView
+                android:id="@+id/windsnow_fly"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/primary_color"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                app:snow_bitmap="@mipmap/snowflake"
+                app:snow_count="40"
+                app:snow_initToLeft="15dp"
+                app:snow_initToRight="15dp"
+                app:snow_maxScale="1.20"
+                app:snow_minScale="0.45"
+                app:snow_xSpeed="50.0"
+                app:snow_ySpeed="300.0" />
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/my_head"
                 android:layout_width="120dp"

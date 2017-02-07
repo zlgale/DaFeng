@@ -192,7 +192,6 @@ public class GiftRainView extends View {
             canvas.drawBitmap(gift.bitmap, m, null);
         }
     }
-
     public class Gift {
         private float x, y;
         private float rotation;
