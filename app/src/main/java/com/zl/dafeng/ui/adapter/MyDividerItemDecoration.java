@@ -86,7 +86,12 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration{
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + layoutParams.bottomMargin;
             final int bottom = top + mSize;
-            canvas.drawRect(left, top, right, bottom, mPaint);
+            if(i<childSize-1){
+                canvas.drawRect(left, top, right, bottom, mPaint);
+            }else{
+                canvas.drawRect(left, top, right, 0, mPaint);
+            }
+
         }
     }
 
