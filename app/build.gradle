@@ -55,8 +55,14 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-
+    // 严正杰 左右滑动
     compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+    // Recyclerview 分割线
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    // 自定义上下刷新加载的layout
+//    compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.4'
+    // 不错的RecyclerViewAdapter
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.8.0'
     /**
      * MaterialDesign UI
      */
@@ -92,13 +98,16 @@ dependencies {
      */
     // 手势缩放
     compile 'com.github.chrisbanes:PhotoView:1.3.0'
-    // 圆形图片
+    // 圆形图片(可用Fresco替代)
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
     /**
-     * FlycoTabLayout
+     * FlycoTabLayout 页卡切换
      */
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+    /**
+     * FlycoTabLayout 状态栏颜色
+     */
     compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
     /**
      * BottomBar

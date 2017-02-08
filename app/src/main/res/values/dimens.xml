@@ -14,4 +14,11 @@
     <dimen name="font_normal2">16sp</dimen>
     <dimen name="font_normal3">20sp</dimen>
     <dimen name="font_large">24sp</dimen>
+
+    <!-- divider -->
+    <dimen name="divider">1dp</dimen>
+    <dimen name="leftmargin">1dp</dimen>
+    <dimen name="rightmargin">1dp</dimen>
+    <dimen name="topmargin">1dp</dimen>
+    <dimen name="bottommargin">1dp</dimen>
 </resources>

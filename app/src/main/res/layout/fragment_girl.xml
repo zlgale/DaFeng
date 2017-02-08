@@ -7,24 +7,26 @@
     <include layout="@layout/toolbar" />
 
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/belle_recycview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-        </com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>
+        </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@mipmap/ic_arrow_upward"
-        app:backgroundTint="@color/fab_color"
-        app:layout_behavior="com.jaydenxiao.androidfire.widget.ScrollAwareFABBehavior" />
+        app:backgroundTint="@color/fab_color" />
 </LinearLayout>
