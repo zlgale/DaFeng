@@ -185,6 +185,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         StatusBarCompat.setStatusBarColor(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
                 | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.statusbar_color));
     }
 
     /**
