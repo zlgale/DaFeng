@@ -3,10 +3,8 @@ package com.zl.dafeng.ui.fragment;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,11 +15,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.google.gson.Gson;
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
-import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
 import com.zl.dafeng.R;
 import com.zl.dafeng.bo.model.BelleModel;
 import com.zl.dafeng.dafeng.Constant;
@@ -30,7 +28,6 @@ import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
 import com.zl.dafeng.ui.adapter.BelleAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
-import com.zl.dafeng.ui.widgetview.CustomLoadMoreView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +42,7 @@ import okhttp3.ResponseBody;
 
 
 @SuppressLint("ValidFragment")
-public class GirlFragment extends BaseFragment {
+public class GirlFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.left_text)
     TextView leftText;
     @BindView(R.id.toolBar_title)
@@ -54,24 +51,22 @@ public class GirlFragment extends BaseFragment {
     TextView rightText;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.belle_recycview)
+    @BindView(R.id.swipe_target)
     RecyclerView belleRecycview;
-    @BindView(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout swipeToLoadLayout;
 
     private BelleAdapter belleAdapter;
     private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
 
-    private static final int TOTAL_COUNTER = 18;
+    private int PAGE_INDEX = 1;
 
-    private static final int PAGE_SIZE = 15;
+    private int PAGE_SIZE = 10;
 
-    private int delayMillis = 1000;
-    private int mCurrentCounter = 0;
-    private boolean isErr;
-    private boolean mLoadMoreEndGone = false;
+    private int CURRENT_NUM;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +79,16 @@ public class GirlFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+        getBellePic();
+    }
+
+    @Override
+    protected void initView() {
+        toolBarTitle.setText(getString(R.string.girl_title));
+
+        swipeToLoadLayout.setOnRefreshListener(this);
+        swipeToLoadLayout.setOnLoadMoreListener(this);
         // 设置线性布局
 //        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         // 设置网格布局
@@ -94,20 +99,20 @@ public class GirlFragment extends BaseFragment {
          *  .drawable(R.drawable.sample)
          */
         //添加分割线
-        belleRecycview.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(getActivity())
-                        .color(Color.RED)
-                        .sizeResId(R.dimen.divider)
-                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
-                        .build());
+//        belleRecycview.addItemDecoration(
+//                new HorizontalDividerItemDecoration.Builder(getActivity())
+//                        .color(Color.RED)
+//                        .sizeResId(R.dimen.divider)
+//                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+//                        .build());
 
-        belleRecycview.addItemDecoration(
-                new VerticalDividerItemDecoration.Builder(getActivity())
-                        .color(Color.RED)
-                        .size(getResources().getDimensionPixelSize(R.dimen.divider))
-                        .margin(getResources().getDimensionPixelSize(R.dimen.topmargin),
-                                getResources().getDimensionPixelSize(R.dimen.bottommargin))
-                        .build());
+//        belleRecycview.addItemDecoration(
+//                new VerticalDividerItemDecoration.Builder(getActivity())
+//                        .color(Color.RED)
+//                        .size(getResources().getDimensionPixelSize(R.dimen.divider))
+//                        .margin(getResources().getDimensionPixelSize(R.dimen.topmargin),
+//                                getResources().getDimensionPixelSize(R.dimen.bottommargin))
+//                        .build());
         /**
          * BaseRecyclerViewAdapterHelper 使用技巧
          */
@@ -135,65 +140,10 @@ public class GirlFragment extends BaseFragment {
 //        belleAdapter.addHeaderView(headView);
 //        belleAdapter.addFooterView(footView);
         // 3、添加空布局
-//        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty,(ViewGroup) belleRecycview.getParent() ,false);
-//        belleAdapter.setEmptyView(emptyView);
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) belleRecycview.getParent(), false);
+        belleAdapter.setEmptyView(emptyView);
         // 4、使用它加载更多
-        belleAdapter.setEnableLoadMore(true);
-        belleAdapter.setLoadMoreView(new CustomLoadMoreView());
-        mCurrentCounter = belleAdapter.getData().size();
-        belleAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                swipeRefreshLayout.setEnabled(false);
-                belleRecycview.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 获取的数量小于当前页面要展示的数量
-                        if (belleAdapter.getData().size() < PAGE_SIZE) {
-                            belleAdapter.loadMoreEnd(true);
-                        } else {
-                            if (mCurrentCounter >= TOTAL_COUNTER) {
-//                    pullToRefreshAdapter.loadMoreEnd();//default visible
-                                belleAdapter.loadMoreEnd(mLoadMoreEndGone);//true is gone,false is visible
-                            } else {
-                                if (isErr) {
-                                    mCurrentCounter = belleAdapter.getData().size();
-                                    belleAdapter.loadMoreComplete();
-                                } else {
-                                    isErr = true;
-                                    Toast.makeText(getActivity(), "网络错误", Toast.LENGTH_LONG).show();
-                                    belleAdapter.loadMoreFail();
-
-                                }
-                            }
-                            swipeRefreshLayout.setEnabled(true);
-                        }
-                    }
-
-                }, delayMillis);
-            }
-        });
         belleRecycview.setAdapter(belleAdapter);
-
-        getBellePic();
-    }
-
-    @Override
-    protected void initView() {
-        toolBarTitle.setText(getString(R.string.girl_title));
-//        swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(R.color.statusbar_color),
-//                getActivity().getResources().getColor(R.color.toolbar_color), getActivity().getResources().getColor(R.color.primary_color));
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                swipeRefreshLayout.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        swipeRefreshLayout.setRefreshing(false);
-//                    }
-//                }, 3000);
-//            }
-//        });
     }
 
     @Override
@@ -202,6 +152,32 @@ public class GirlFragment extends BaseFragment {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshOrLoad();
+        com.orhanobut.logger.Logger.d("onResume-->", "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        refreshOrLoad();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        refreshOrLoad();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        refreshOrLoad();
     }
 
     /**
@@ -215,8 +191,8 @@ public class GirlFragment extends BaseFragment {
         parameters.put("showapi_timestamp", "");
         parameters.put("showapi_sign_method", "");
         parameters.put("showapi_res_gzip", "");
-        parameters.put("num", "10");
-        parameters.put("page", "1");
+        parameters.put("num", PAGE_SIZE + "");
+        parameters.put("page", PAGE_INDEX + "");
         parameters.put("rand", "1");
 
         Novate novate = new Novate.Builder(getActivity())
@@ -243,7 +219,11 @@ public class GirlFragment extends BaseFragment {
                     for (int i = 0; i < belleModel.getShowapi_res_body().getNewslist().size(); ++i) {
                         NewslistBeanList.add(belleModel.getShowapi_res_body().getNewslist().get(i));
                     }
-
+                    refreshOrLoad();
+//                    if (NewslistBeanList.size() == PAGE_INDEX * PAGE_SIZE) {
+//                        swipeToLoadLayout.setLoadingMore(false);
+////                        Toast.makeText(getActivity(),"加载完成！",Toast.LENGTH_LONG).show();
+//                    }
                     belleAdapter.notifyDataSetChanged();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -255,5 +235,45 @@ public class GirlFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     public void onClick() {
+    }
+
+    @Override
+    public void onLoadMore() {
+        PAGE_INDEX += 1;
+        swipeToLoadLayout.setLoadingMore(true);
+        getBellePic();
+        swipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeToLoadLayout.setLoadingMore(false);
+            }
+        }, 2000);
+    }
+
+    @Override
+    public void onRefresh() {
+        PAGE_INDEX = 1;
+        PAGE_SIZE = 10;
+        NewslistBeanList.clear();
+        swipeToLoadLayout.setRefreshing(true);
+        getBellePic();
+        swipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeToLoadLayout.setRefreshing(false);
+            }
+        }, 2000);
+    }
+
+    private void refreshOrLoad() {
+        if (swipeToLoadLayout == null) {
+            return;
+        }
+        if (swipeToLoadLayout.isRefreshing()) {
+            swipeToLoadLayout.setRefreshing(false);
+        }
+        if (swipeToLoadLayout.isLoadingMore()) {
+            swipeToLoadLayout.setLoadingMore(false);
+        }
     }
 }

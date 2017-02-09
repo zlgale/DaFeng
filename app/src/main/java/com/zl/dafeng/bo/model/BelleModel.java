@@ -11,22 +11,21 @@ import java.util.List;
 
 public class BelleModel {
 
-
     /**
      * showapi_res_code : 0
      * showapi_res_error :
-     * showapi_res_body : {"newslist":[{"title":"芝芝Booty陈芝 [HuaYan花の颜] 20170104 VOL019 诱人酥胸丰腴香臀性感比基尼菲律宾长滩岛旅拍","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_dde75140309507cce61d74bf01e816c4-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 17:00","url":"http://m.xxxiao.com/116800"},{"title":"[贴图]拍公园清纯美女","picUrl":"http://image.hnol.net/c/2017-02/04/09/201702040954552181-4217076.jpg","description":"华声美女","ctime":"2017-02-04 14:00","url":"http://bbs.voc.com.cn/mm/meinv-7644571-0-1.html"},{"title":"游子谣","picUrl":"http://image.hnol.net/c/2017-02/04/08/201702040829516221-239867.gif","description":"华声美女","ctime":"2017-02-04 09:00","url":"http://bbs.voc.com.cn/mm/meinv-7644466-0-1.html"},{"title":"清新妩媚尤物 Yumi尤美 [YOUMI尤蜜荟] 20170103 VOL005 清澈如水般的眸子琼鼻挺直秀丽樱唇娇盈如蜜空灵脱俗","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_8b7ffa09655518989eb4037861321d90-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116659"},{"title":"童颜巨乳小红帽美女 思淇Sukiii [YOUMI尤蜜荟] 20170105 VOL006 玲珑精致清秀俏丽少女一身艳红圣诞套图","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_5762a9547bc3f03f4742eef6f67462ce-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116660"},{"title":"酸酱兔 [LeYuan星乐园] 20170110 VOL024 惹火美臀大波浪金黄卷发修长美腿圆润酥胸性感内衣情趣手铐制服诱惑","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_a4f6104808e48badb9f2ae9e0c9957e4-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116662"},{"title":"I邻家女孩\u2026\u2026[不是苏琪 谢立琪 92p]\u2026\u2026第九百六十三辑","picUrl":"http://image.hnol.net/c/2017-02/03/19/20170203191100991-1559530.jpg","description":"华声美女","ctime":"2017-02-04 08:00","url":"http://bbs.voc.com.cn/mm/meinv-7644168-0-1.html"},{"title":"☆成熟女人\u2026\u2026[我的小紫 简嘉莹 172p]\u2026\u2026第八百八十九辑","picUrl":"http://image.hnol.net/c/2017-02/03/20/201702032048557471-1559530.jpg","description":"华声美女","ctime":"2017-02-03 22:00","url":"http://bbs.voc.com.cn/mm/meinv-7644238-0-1.html"},{"title":"[贴图]美韵女子","picUrl":"http://image.hnol.net/c/2017-02/03/08/201702030839521611-4217076.jpg","description":"华声美女","ctime":"2017-02-03 17:01","url":"http://bbs.voc.com.cn/mm/meinv-7643603-0-1.html"},{"title":"矢野杏奈 清新养眼日本青文字系人气女歌手","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_2f2417b89397c0b822ae102221bf206a-710x1024.jpg","description":"美女写真","ctime":"2017-02-03 17:01","url":"http://m.xxxiao.com/116489"}],"code":200,"msg":"success"}
+     * showapi_res_body : {"newslist":[{"title":"[贴图]天使面孔魔鬼身材","picUrl":"http://image.hnol.net/c/2017-02/03/17/201702031714433641-4659347.jpg","description":"华声美女","ctime":"2017-02-09 11:00","url":"http://bbs.voc.com.cn/mm/meinv-7644102-0-1.html"},{"title":"李李七七喜喜 [IMISS爱蜜社] 20170110 VOL146 雅致清丽柔情似水圣诞小鹿 酥胸玉兔滑腻美臀性感内衣诱惑","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_213a6f6e1a11a19f897bb4de7d320a60-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 10:00","url":"http://m.xxxiao.com/118084"},{"title":"静心若尘","picUrl":"http://image.hnol.net/c/2017-02/09/08/201702090834032171-239867.jpg","description":"华声美女","ctime":"2017-02-09 09:00","url":"http://bbs.voc.com.cn/mm/meinv-7649441-0-1.html"},{"title":"涟漪sara漪娜 [TouTiao头条女神] 20170206 女下属的诱惑 雪肌玉肤肉感美腿翘臀凹凸性感私房照","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_67bfee872ddb0ebb32a8118e5b4598ba-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 09:00","url":"http://m.xxxiao.com/118082"},{"title":"唐琪儿Beauty [MyGirl美媛馆] 20170109 VOL237 王艳卓粉肌脂腻杨柳细腰妩媚动人大尺度内衣写真","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_55ee5567a70cd42570324b5370991266-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 09:00","url":"http://m.xxxiao.com/118083"},{"title":"[贴图]内心深处的孤独","picUrl":"http://image.hnol.net/c/2017-02/08/18/201702081849064341-4659347.jpg","description":"华声美女","ctime":"2017-02-08 19:00","url":"http://bbs.voc.com.cn/mm/meinv-7649144-0-1.html"},{"title":"长发美女 陈丹萌 定制私房写真靓照","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_7b5b4981033209a45e85a7bab49b8a93-768x1024.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117994"},{"title":"台妹嫩模女郎 Irene小头(余晨瑀) 甜美少女比基尼靓丽美拍","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_452936a257ac62e54635271242c4606d.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117995"},{"title":"巨乳女神 刘娅希 [BoLoli波萝社新刊] 2017120 BOL019 泰国泳池嬉戏波涛胸涌比基尼清凉一夏","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_89c231f55669805191aae5fa50d2480d.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117996"},{"title":"[贴图]沉思","picUrl":"http://image.hnol.net/c/2017-02/08/17/201702081751012261-4659347.jpg","description":"华声美女","ctime":"2017-02-08 18:00","url":"http://bbs.voc.com.cn/mm/meinv-7649101-0-1.html"}],"code":200,"msg":"success"}
      */
 
-    private int showapi_res_code;
+    private String showapi_res_code;
     private String showapi_res_error;
     private ShowapiResBodyBean showapi_res_body;
 
-    public int getShowapi_res_code() {
+    public String getShowapi_res_code() {
         return showapi_res_code;
     }
 
-    public void setShowapi_res_code(int showapi_res_code) {
+    public void setShowapi_res_code(String showapi_res_code) {
         this.showapi_res_code = showapi_res_code;
     }
 
@@ -48,20 +47,20 @@ public class BelleModel {
 
     public static class ShowapiResBodyBean {
         /**
-         * newslist : [{"title":"芝芝Booty陈芝 [HuaYan花の颜] 20170104 VOL019 诱人酥胸丰腴香臀性感比基尼菲律宾长滩岛旅拍","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_dde75140309507cce61d74bf01e816c4-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 17:00","url":"http://m.xxxiao.com/116800"},{"title":"[贴图]拍公园清纯美女","picUrl":"http://image.hnol.net/c/2017-02/04/09/201702040954552181-4217076.jpg","description":"华声美女","ctime":"2017-02-04 14:00","url":"http://bbs.voc.com.cn/mm/meinv-7644571-0-1.html"},{"title":"游子谣","picUrl":"http://image.hnol.net/c/2017-02/04/08/201702040829516221-239867.gif","description":"华声美女","ctime":"2017-02-04 09:00","url":"http://bbs.voc.com.cn/mm/meinv-7644466-0-1.html"},{"title":"清新妩媚尤物 Yumi尤美 [YOUMI尤蜜荟] 20170103 VOL005 清澈如水般的眸子琼鼻挺直秀丽樱唇娇盈如蜜空灵脱俗","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_8b7ffa09655518989eb4037861321d90-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116659"},{"title":"童颜巨乳小红帽美女 思淇Sukiii [YOUMI尤蜜荟] 20170105 VOL006 玲珑精致清秀俏丽少女一身艳红圣诞套图","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_5762a9547bc3f03f4742eef6f67462ce-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116660"},{"title":"酸酱兔 [LeYuan星乐园] 20170110 VOL024 惹火美臀大波浪金黄卷发修长美腿圆润酥胸性感内衣情趣手铐制服诱惑","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_a4f6104808e48badb9f2ae9e0c9957e4-683x1024.jpg","description":"美女写真","ctime":"2017-02-04 09:00","url":"http://m.xxxiao.com/116662"},{"title":"I邻家女孩\u2026\u2026[不是苏琪 谢立琪 92p]\u2026\u2026第九百六十三辑","picUrl":"http://image.hnol.net/c/2017-02/03/19/20170203191100991-1559530.jpg","description":"华声美女","ctime":"2017-02-04 08:00","url":"http://bbs.voc.com.cn/mm/meinv-7644168-0-1.html"},{"title":"☆成熟女人\u2026\u2026[我的小紫 简嘉莹 172p]\u2026\u2026第八百八十九辑","picUrl":"http://image.hnol.net/c/2017-02/03/20/201702032048557471-1559530.jpg","description":"华声美女","ctime":"2017-02-03 22:00","url":"http://bbs.voc.com.cn/mm/meinv-7644238-0-1.html"},{"title":"[贴图]美韵女子","picUrl":"http://image.hnol.net/c/2017-02/03/08/201702030839521611-4217076.jpg","description":"华声美女","ctime":"2017-02-03 17:01","url":"http://bbs.voc.com.cn/mm/meinv-7643603-0-1.html"},{"title":"矢野杏奈 清新养眼日本青文字系人气女歌手","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_2f2417b89397c0b822ae102221bf206a-710x1024.jpg","description":"美女写真","ctime":"2017-02-03 17:01","url":"http://m.xxxiao.com/116489"}]
+         * newslist : [{"title":"[贴图]天使面孔魔鬼身材","picUrl":"http://image.hnol.net/c/2017-02/03/17/201702031714433641-4659347.jpg","description":"华声美女","ctime":"2017-02-09 11:00","url":"http://bbs.voc.com.cn/mm/meinv-7644102-0-1.html"},{"title":"李李七七喜喜 [IMISS爱蜜社] 20170110 VOL146 雅致清丽柔情似水圣诞小鹿 酥胸玉兔滑腻美臀性感内衣诱惑","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_213a6f6e1a11a19f897bb4de7d320a60-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 10:00","url":"http://m.xxxiao.com/118084"},{"title":"静心若尘","picUrl":"http://image.hnol.net/c/2017-02/09/08/201702090834032171-239867.jpg","description":"华声美女","ctime":"2017-02-09 09:00","url":"http://bbs.voc.com.cn/mm/meinv-7649441-0-1.html"},{"title":"涟漪sara漪娜 [TouTiao头条女神] 20170206 女下属的诱惑 雪肌玉肤肉感美腿翘臀凹凸性感私房照","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_67bfee872ddb0ebb32a8118e5b4598ba-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 09:00","url":"http://m.xxxiao.com/118082"},{"title":"唐琪儿Beauty [MyGirl美媛馆] 20170109 VOL237 王艳卓粉肌脂腻杨柳细腰妩媚动人大尺度内衣写真","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_55ee5567a70cd42570324b5370991266-683x1024.jpg","description":"美女写真","ctime":"2017-02-09 09:00","url":"http://m.xxxiao.com/118083"},{"title":"[贴图]内心深处的孤独","picUrl":"http://image.hnol.net/c/2017-02/08/18/201702081849064341-4659347.jpg","description":"华声美女","ctime":"2017-02-08 19:00","url":"http://bbs.voc.com.cn/mm/meinv-7649144-0-1.html"},{"title":"长发美女 陈丹萌 定制私房写真靓照","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_7b5b4981033209a45e85a7bab49b8a93-768x1024.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117994"},{"title":"台妹嫩模女郎 Irene小头(余晨瑀) 甜美少女比基尼靓丽美拍","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_452936a257ac62e54635271242c4606d.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117995"},{"title":"巨乳女神 刘娅希 [BoLoli波萝社新刊] 2017120 BOL019 泰国泳池嬉戏波涛胸涌比基尼清凉一夏","picUrl":"http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_89c231f55669805191aae5fa50d2480d.jpg","description":"美女写真","ctime":"2017-02-08 19:00","url":"http://m.xxxiao.com/117996"},{"title":"[贴图]沉思","picUrl":"http://image.hnol.net/c/2017-02/08/17/201702081751012261-4659347.jpg","description":"华声美女","ctime":"2017-02-08 18:00","url":"http://bbs.voc.com.cn/mm/meinv-7649101-0-1.html"}]
          * code : 200
          * msg : success
          */
 
-        private int code;
+        private String code;
         private String msg;
         private List<NewslistBean> newslist;
 
-        public int getCode() {
+        public String getCode() {
             return code;
         }
 
-        public void setCode(int code) {
+        public void setCode(String code) {
             this.code = code;
         }
 
@@ -83,11 +82,11 @@ public class BelleModel {
 
         public static class NewslistBean {
             /**
-             * title : 芝芝Booty陈芝 [HuaYan花の颜] 20170104 VOL019 诱人酥胸丰腴香臀性感比基尼菲律宾长滩岛旅拍
-             * picUrl : http://m.xxxiao.com/wp-content/uploads/sites/3/2017/02/m.xxxiao.com_dde75140309507cce61d74bf01e816c4-683x1024.jpg
-             * description : 美女写真
-             * ctime : 2017-02-04 17:00
-             * url : http://m.xxxiao.com/116800
+             * title : [贴图]天使面孔魔鬼身材
+             * picUrl : http://image.hnol.net/c/2017-02/03/17/201702031714433641-4659347.jpg
+             * description : 华声美女
+             * ctime : 2017-02-09 11:00
+             * url : http://bbs.voc.com.cn/mm/meinv-7644102-0-1.html
              */
 
             private String title;

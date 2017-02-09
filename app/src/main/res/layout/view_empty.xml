@@ -4,7 +4,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/screen_background_color"
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
     app:layout_collapseMode="pin"
@@ -22,8 +22,8 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="empty"
-            android:textColor="@android:color/white"
+            android:text="暂无数据"
+            android:textColor="@color/gray"
             android:textSize="20sp" />
 
     </RelativeLayout>
