@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -37,7 +36,6 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import okhttp3.ResponseBody;
 
 
@@ -53,8 +51,8 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
     Toolbar toolbar;
     @BindView(R.id.swipe_target)
     RecyclerView belleRecycview;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+//    @BindView(R.id.fab)
+//    FloatingActionButton fab;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
 
@@ -80,7 +78,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
     @Override
     protected void initData() {
 
-        getBellePic();
+        getBellePicList();
     }
 
     @Override
@@ -183,7 +181,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
     /**
      * 获取美女图片
      */
-    private void getBellePic() {
+    private void getBellePicList() {
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("showapi_appid", "31566");
@@ -201,7 +199,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
                 .addParameters(parameters)
                 .addLog(true)
                 .build();
-        novate.post(Constant.get_bellePic, parameters, new BaseSubscriber<ResponseBody>(getActivity()) {
+        novate.post(Constant.get_bellePicList, parameters, new BaseSubscriber<ResponseBody>(getActivity()) {
 
             @Override
             public void onError(Throwable e) {
@@ -233,15 +231,15 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 
     }
 
-    @OnClick(R.id.fab)
-    public void onClick() {
-    }
+//    @OnClick(R.id.fab)
+//    public void onClick() {
+//    }
 
     @Override
     public void onLoadMore() {
         PAGE_INDEX += 1;
         swipeToLoadLayout.setLoadingMore(true);
-        getBellePic();
+        getBellePicList();
         swipeToLoadLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -252,11 +250,11 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     public void onRefresh() {
-        PAGE_INDEX = 1;
+        PAGE_INDEX += 1;
         PAGE_SIZE = 10;
         NewslistBeanList.clear();
         swipeToLoadLayout.setRefreshing(true);
-        getBellePic();
+        getBellePicList();
         swipeToLoadLayout.postDelayed(new Runnable() {
             @Override
             public void run() {

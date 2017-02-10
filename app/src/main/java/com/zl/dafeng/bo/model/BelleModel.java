@@ -3,7 +3,7 @@ package com.zl.dafeng.bo.model;
 import java.util.List;
 
 /**
- * <一句话功能简述>
+ * <美女图片>
  *
  * @author DaFeng 2017-02-05 16:13
  * @email 598787663@qq.com

@@ -1,27 +1,43 @@
 package com.zl.dafeng.ui.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.google.gson.Gson;
 import com.zl.dafeng.R;
-import com.zl.dafeng.ui.activity.ExempleActivity;
+import com.zl.dafeng.bo.model.VideoModel;
+import com.zl.dafeng.dafeng.Constant;
+import com.zl.dafeng.novate.BaseSubscriber;
+import com.zl.dafeng.novate.Novate;
+import com.zl.dafeng.novate.Throwable;
+import com.zl.dafeng.ui.adapter.VideoAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
-import com.zl.dafeng.ui.widgetview.GiftRainView;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import okhttp3.ResponseBody;
 
 
 @SuppressLint("ValidFragment")
-public class VideoFragment extends BaseFragment {
+public class VideoFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
 
     @BindView(R.id.left_text)
     TextView leftText;
@@ -31,8 +47,14 @@ public class VideoFragment extends BaseFragment {
     TextView rightText;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    private String mTitle;
-    private boolean isStart;
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout swipeToLoadLayout;
+    @BindView(R.id.swipe_target)
+    RecyclerView swipeTarget;
+    private int PAGE_INDEX = 1;
+    private String title = "";
+    private List<VideoModel.ShowapiResBodyBean.PagebeanBean.ContentlistBean> ContentlistBean = new ArrayList<VideoModel.ShowapiResBodyBean.PagebeanBean.ContentlistBean>();
+    private VideoAdapter videoAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,13 +69,77 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        getVideoList();
     }
 
     @Override
     protected void initView() {
-        leftText.setVisibility(View.GONE);
         toolBarTitle.setText(getString(R.string.video_title));
+
+        swipeToLoadLayout.setOnRefreshListener(this);
+        swipeToLoadLayout.setOnLoadMoreListener(this);
+
+        swipeTarget.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        videoAdapter = new VideoAdapter(R.layout.item_video, ContentlistBean,getActivity());
+//        videoAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) swipeTarget.getParent(), false);
+        videoAdapter.setEmptyView(emptyView);
+        swipeTarget.setAdapter(videoAdapter);
+    }
+
+    /**
+     * 获取视频资源
+     * type=10 图片
+     * type=29 段子
+     * type=31 声音
+     * type=41 视频
+     */
+    private void getVideoList() {
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("showapi_appid", "31566");
+        parameters.put("showapi_sign", "3f16db6f4f82413ba878e772f8788145");
+        parameters.put("showapi_timestamp", "");
+        parameters.put("showapi_sign_method", "");
+        parameters.put("showapi_res_gzip", "");
+        parameters.put("type", "41");
+        parameters.put("title", title);
+        parameters.put("page", PAGE_INDEX + "");
+
+        Novate novate = new Novate.Builder(getActivity())
+                .connectTimeout(8)
+                .baseUrl(Constant.COMMONURL)
+                .addParameters(parameters)
+                .addLog(true)
+                .build();
+        novate.post(Constant.get_videoList, parameters, new BaseSubscriber<ResponseBody>(getActivity()) {
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("OkHttp", e.getMessage());
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNext(ResponseBody responseBody) {
+
+                try {
+                    String jstr = new String(responseBody.bytes());
+                    VideoModel videoModel = new VideoModel();
+                    videoModel = new Gson().fromJson(jstr, VideoModel.class);
+                    for (int i = 0; i < videoModel.getShowapi_res_body().getPagebean().getContentlist().size(); ++i) {
+                        ContentlistBean.add(videoModel.getShowapi_res_body().getPagebean().getContentlist().get(i));
+                    }
+                    refreshOrLoad();
+                    videoAdapter.notifyDataSetChanged();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -64,4 +150,48 @@ public class VideoFragment extends BaseFragment {
         return rootView;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        refreshOrLoad();
+    }
+
+    private void refreshOrLoad() {
+        if (swipeToLoadLayout == null) {
+            return;
+        }
+        if (swipeToLoadLayout.isRefreshing()) {
+            swipeToLoadLayout.setRefreshing(false);
+        }
+        if (swipeToLoadLayout.isLoadingMore()) {
+            swipeToLoadLayout.setLoadingMore(false);
+        }
+    }
+
+    @Override
+    public void onLoadMore() {
+        PAGE_INDEX += 1;
+        swipeToLoadLayout.setLoadingMore(true);
+        getVideoList();
+        swipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeToLoadLayout.setLoadingMore(false);
+            }
+        }, 2000);
+    }
+
+    @Override
+    public void onRefresh() {
+        PAGE_INDEX += 1;
+        ContentlistBean.clear();
+        swipeToLoadLayout.setRefreshing(true);
+        getVideoList();
+        swipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeToLoadLayout.setRefreshing(false);
+            }
+        }, 2000);
+    }
 }

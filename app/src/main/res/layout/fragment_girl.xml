@@ -44,12 +44,12 @@
 
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        app:backgroundTint="@color/fab_color"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@mipmap/ic_arrow_upward" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--app:backgroundTint="@color/fab_color"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@mipmap/ic_arrow_upward" />-->
 </LinearLayout>

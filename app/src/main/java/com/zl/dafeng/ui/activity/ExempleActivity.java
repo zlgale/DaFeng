@@ -323,7 +323,7 @@ public class ExempleActivity extends AppCompatActivity {
          * 如果需要解析后返回 则调用novate.executeGet()
          * 参考 performGet()中的方式
          */
-        novate.post(Constant.get_bellePic, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
+        novate.post(Constant.get_bellePicList, parameters, new BaseSubscriber<ResponseBody>(ExempleActivity.this) {
 
             @Override
             public void onError(Throwable e) {

@@ -65,6 +65,8 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.8.0'
 
     compile 'com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE'
+    // 视频框架
+    compile 'fm.jiecao:jiecaovideoplayer:5.4'
     /**
      * MaterialDesign UI
      */
