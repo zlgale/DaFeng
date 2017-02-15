@@ -49,34 +49,6 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="我的关注"
-                        android:drawableBottom="@mipmap/line_1"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center|left"
-                        android:layout_marginLeft="10dp"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/per_4_x3" />
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="1dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="15dp"
                         android:text="我的收藏"
                         android:drawableBottom="@mipmap/line_1"
                         android:textColor="@color/black" />
@@ -105,7 +77,7 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="我的草稿"
+                        android:text="我要推荐"
                         android:drawableBottom="@mipmap/line_1"
                         android:textColor="@color/black" />
 
@@ -133,7 +105,7 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="最近浏览"
+                        android:text="约会归来"
                         android:drawableBottom="@mipmap/line_1"
                         android:textColor="@color/black" />
 
@@ -161,7 +133,7 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="我的书架"
+                        android:text="足桑体验"
                         android:drawableBottom="@mipmap/line_1"
                         android:textColor="@color/black" />
 
@@ -189,7 +161,35 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="我的足迹"
+                        android:text="我的开车"
+                        android:drawableBottom="@mipmap/line_1"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/per_4_x3" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="1dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="虚假举报"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
