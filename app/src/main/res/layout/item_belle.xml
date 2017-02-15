@@ -11,5 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         fresco:placeholderImage="@mipmap/liuyan"
+        fresco:placeholderImageScaleType="fitCenter"
         fresco:failureImage="@mipmap/liuyan"/>
 </LinearLayout>

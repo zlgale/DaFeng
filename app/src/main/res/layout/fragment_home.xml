@@ -1,36 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="true">
+    android:clipToPadding="true"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/sliding_layout"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <com.zl.dafeng.ui.widgetview.navbarview.MDNavBarView
+        android:id="@+id/mdNavBarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/toolbar_color"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
+    </com.zl.dafeng.ui.widgetview.navbarview.MDNavBarView>
 
-        <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/sliding_tab"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/toolbar_color"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            tl:tl_indicator_color="@color/gray"
-            tl:tl_indicator_corner_radius="5dp"
-            tl:tl_indicator_margin_left="2dp"
-            tl:tl_indicator_margin_right="2dp"
-            tl:tl_indicator_style="BLOCK"
-            tl:tl_textUnselectColor="@color/white" />
-
-    </RelativeLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/sliding_vp"
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/sliding_layout" />
-</RelativeLayout>
+        android:background="@color/screen_background_color"
+        app:default_to_loading_more_scrolling_duration="500"
+        app:default_to_refreshing_scrolling_duration="800"
+        app:load_more_complete_delay_duration="0"
+        app:load_more_final_drag_offset="@dimen/load_more_final_offset_google"
+        app:load_more_trigger_offset="60dp"
+        app:refresh_complete_delay_duration="0"
+        app:refresh_final_drag_offset="@dimen/refresh_header_height_yalantis"
+        app:refresh_trigger_offset="@dimen/refresh_header_height_yalantis"
+        app:swipe_style="blew">
+        <!--final_drag_offset 可拖拽的最大距离-->
+        <!--trigger_offset 触发refreshing or loading 时的距离。(大于对应布局高度才会有效果)-->
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_google_hook_header" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_google_hook_footer" />
+
+
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+</LinearLayout>

@@ -8,6 +8,9 @@ public class Constant {
     // 新闻频道查询
     public static final String get_newsChannelList = "109-34";
 
+    // 新闻查询
+    public static final String get_newsList = "109-35";
+
     // 美女图片
     public static final String get_bellePicList = "197-1";
 

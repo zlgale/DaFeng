@@ -18,15 +18,15 @@
         app:load_more_final_drag_offset="@dimen/load_more_final_offset_google"
         app:load_more_trigger_offset="60dp"
         app:refresh_complete_delay_duration="0"
-        app:refresh_final_drag_offset="@dimen/refresh_header_height_yalantis"
-        app:refresh_trigger_offset="@dimen/refresh_header_height_yalantis"
+        app:refresh_final_drag_offset="@dimen/refresh_header_height_google"
+        app:refresh_trigger_offset="@dimen/refresh_header_height_google"
         app:swipe_style="blew">
         <!--final_drag_offset 可拖拽的最大距离-->
         <!--trigger_offset 触发refreshing or loading 时的距离。(大于对应布局高度才会有效果)-->
 
         <include
             android:id="@id/swipe_refresh_header"
-            layout="@layout/layout_yalantis_header" />
+            layout="@layout/layout_google_hook_header" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/swipe_target"

@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:drawableLeft="@mipmap/back"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
             android:text="左侧"

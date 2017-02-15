@@ -59,8 +59,8 @@ public class ViewPagerActivity extends BaseActivity {
     @Override
     protected void initialize() {
         for (String title : mTitles) {
-            mFragments.add(CardFragment.getInstance("ViewPager setCurrentItem false 不闪烁" + title));
-            mFragments2.add(CardFragment.getInstance("Switch Fragment " + title));
+            mFragments.add(new CardFragment());
+            mFragments2.add(new CardFragment());
         }
 
 

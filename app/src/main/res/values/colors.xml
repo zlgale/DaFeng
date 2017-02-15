@@ -17,7 +17,10 @@
     <color name="screen_background_color">#f5f5f5</color>
     <color name="primary_color">#1195DB</color>
     <color name="Lime">#00FF88</color>
-
+    <!-- MDNavBarView -->
+    <color name="md_c_555555">#555555</color>
+    <color name="md_c_a7a7a7">#a7a7a7</color>
+    <color name="md_c_e6e6e6">#e6e6e6</color>
     <color name="unselect_color">#a9b7b7</color>
 
     <color name="white">#FFFFFF</color> <!--白色 -->

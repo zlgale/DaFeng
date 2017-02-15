@@ -1,0 +1,13 @@
+cardview 属性
+其次介绍一下它的基本属性：
+app:cardBackgroundColor这是设置背景颜色
+app:cardCornerRadius这是设置圆角大小
+app:cardElevation这是设置z轴的阴影
+app:cardMaxElevation这是设置z轴的最大高度值
+app:cardUseCompatPadding是否使用CompatPadding
+app:cardPreventCornerOverlap是否使用PreventCornerOverlap
+app:contentPadding 设置内容的padding
+app:contentPaddingLeft 设置内容的左padding
+app:contentPaddingTop 设置内容的上padding
+app:contentPaddingRight 设置内容的右padding
+app:contentPaddingBottom 设置内容的底padding

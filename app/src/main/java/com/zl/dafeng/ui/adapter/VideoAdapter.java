@@ -2,13 +2,12 @@ package com.zl.dafeng.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.zl.dafeng.R;
 import com.zl.dafeng.bo.model.VideoModel;
 
@@ -44,11 +43,10 @@ public class VideoAdapter extends BaseQuickAdapter<VideoModel.ShowapiResBodyBean
         Bitmap bitmap = null;
 
         videoTitle.setText(item.getText());
-        SimpleDraweeView simpleDraweeView = (SimpleDraweeView) jcVideoPlayerStandard.thumbImageView;
+        Glide.with(mContext).load(item.getProfile_image()).into(jcVideoPlayerStandard.thumbImageView);
         jcVideoPlayerStandard.setUp(
                 item.getVideo_uri(), JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,
                 "");
-        simpleDraweeView.setImageURI(Uri.parse(item.getProfile_image()));
 
     }
 }

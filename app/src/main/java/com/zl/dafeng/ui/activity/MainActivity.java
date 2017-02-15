@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
     FrameLayout frameLayout;
     @BindView(R.id.content_view)
     CommonTabLayout contentView;
-    private String[] mTitles = {"新闻", "美女", "视频", "我的"};
+    private String[] mTitles = {"飘风", "飘花", "飘月", "飘雪"};
     private int[] mIconUnselectIds = {R.mipmap.tab_news_unselect, R.mipmap.tab_girl_unselect, R.mipmap.tab_video_unselect,
             R.mipmap.tab_mine_unselect};
     private int[] mIconSelectIds = {R.mipmap.tab_news_select, R.mipmap.tab_girl_select, R.mipmap.tab_video_select,
