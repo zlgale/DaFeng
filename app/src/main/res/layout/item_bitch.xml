@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/screen_background_color"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/person_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            fresco:failureImage="@mipmap/bird"
+            fresco:placeholderImage="@mipmap/bird" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/person_sex_icon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/sex_girl"/>
+                <TextView
+                    android:id="@+id/person_sex"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_16" />
+                <TextView
+                    android:id="@+id/person_age"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_16" />
+                <TextView
+                    android:id="@+id/person_adress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|right"
+                    android:paddingRight="20dp"
+                    android:text="地址"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_16" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+                <com.zl.dafeng.ui.widgetview.RatingBar
+                    xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/ratingbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    hedgehog:clickable="true"
+                    hedgehog:halfstart="true"
+                    hedgehog:starCount="5"
+                    android:numStars="3"
+                    hedgehog:starEmpty="@mipmap/heart_gray"
+                    hedgehog:starFill="@mipmap/heart_red"
+                    hedgehog:starHalf="@mipmap/heart_half"
+                    hedgehog:starImagePadding="0dp"
+                    hedgehog:starImageHeight="20dp"
+                    hedgehog:starImageWidth="20dp" />
+                <TextView
+                    android:id="@+id/person_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="风花月雪动人心，你说呢"
+                    android:maxLength="50"
+                    android:lineSpacingExtra="1dp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

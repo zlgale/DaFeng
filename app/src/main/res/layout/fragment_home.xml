@@ -2,20 +2,13 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:clipToPadding="true"
     android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
-
-    <com.zl.dafeng.ui.widgetview.navbarview.MDNavBarView
-        android:id="@+id/mdNavBarView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.zl.dafeng.ui.widgetview.navbarview.MDNavBarView>
-
     <com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipeToLoadLayout"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">飘</string>
-    <string name="video_title">大千世界</string>
-    <string name="girl_title">靓妹子</string>
+    <string name="title_video">大千世界</string>
+    <string name="title_sauna">发K足桑</string>
     <string name="share">分享</string>
 
     <string name="channel_manage">频道管理</string>

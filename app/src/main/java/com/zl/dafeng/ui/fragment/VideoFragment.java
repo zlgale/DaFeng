@@ -74,7 +74,7 @@ public class VideoFragment extends BaseFragment implements OnRefreshListener, On
 
     @Override
     protected void initView() {
-        toolBarTitle.setText(getString(R.string.video_title));
+        toolBarTitle.setText(getString(R.string.title_video));
 
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);

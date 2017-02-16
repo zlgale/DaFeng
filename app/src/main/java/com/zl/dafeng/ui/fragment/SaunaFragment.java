@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,13 +19,14 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.google.gson.Gson;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import com.zl.dafeng.R;
 import com.zl.dafeng.bo.model.BelleModel;
 import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
-import com.zl.dafeng.ui.adapter.BelleAdapter;
+import com.zl.dafeng.ui.adapter.SaunaAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ import okhttp3.ResponseBody;
 
 
 @SuppressLint("ValidFragment")
-public class GirlFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
+public class SaunaFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.left_text)
     TextView leftText;
     @BindView(R.id.toolBar_title)
@@ -56,7 +57,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
 
-    private BelleAdapter belleAdapter;
+    private SaunaAdapter saunaAdapter;
     private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
 
     private int PAGE_INDEX = 1;
@@ -72,7 +73,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_girl;
+        return R.layout.fragment_sauna;
     }
 
     @Override
@@ -83,26 +84,26 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     protected void initView() {
-        toolBarTitle.setText(getString(R.string.girl_title));
+        toolBarTitle.setText(getString(R.string.title_sauna));
 
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         // 设置线性布局
-//        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        belleRecycview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         // 设置网格布局
-        belleRecycview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+//        belleRecycview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         /**
          * RecyclerView-FlexibleDivider 添加分割线
          *  .drawable(R.drawable.sample)
          */
         //添加分割线
-//        belleRecycview.addItemDecoration(
-//                new HorizontalDividerItemDecoration.Builder(getActivity())
-//                        .color(Color.RED)
-//                        .sizeResId(R.dimen.divider)
-//                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
-//                        .build());
+        belleRecycview.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getActivity())
+                        .color(getActivity().getResources().getColor(R.color.screen_background_color))
+                        .sizeResId(R.dimen.divider)
+                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+                        .build());
 
 //        belleRecycview.addItemDecoration(
 //                new VerticalDividerItemDecoration.Builder(getActivity())
@@ -114,7 +115,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
         /**
          * BaseRecyclerViewAdapterHelper 使用技巧
          */
-        belleAdapter = new BelleAdapter(getActivity(), NewslistBeanList);
+        saunaAdapter = new SaunaAdapter(getActivity(), NewslistBeanList);
 
         // 1、设置显现效果动画（渐显、缩放、从下到上，从左到右、从右到左）也可以自定义
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
@@ -123,12 +124,12 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
         // 自定义动画如此轻松
-        belleAdapter.openLoadAnimation(new BaseAnimation() {
+        saunaAdapter.openLoadAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{
-                        ObjectAnimator.ofFloat(view, "scaleY", 1, 1.1f, 1),
-                        ObjectAnimator.ofFloat(view, "scaleX", 1, 1.1f, 1)
+                        ObjectAnimator.ofFloat(view, "scaleY", 1, 0.5f, 1),
+                        ObjectAnimator.ofFloat(view, "scaleX", 1, 1.5f, 1)
                 };
             }
         });
@@ -139,9 +140,9 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 //        belleAdapter.addFooterView(footView);
         // 3、添加空布局
         View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) belleRecycview.getParent(), false);
-        belleAdapter.setEmptyView(emptyView);
+        saunaAdapter.setEmptyView(emptyView);
         // 4、使用它加载更多
-        belleRecycview.setAdapter(belleAdapter);
+        belleRecycview.setAdapter(saunaAdapter);
     }
 
     @Override
@@ -222,7 +223,7 @@ public class GirlFragment extends BaseFragment implements OnRefreshListener, OnL
 //                        swipeToLoadLayout.setLoadingMore(false);
 ////                        Toast.makeText(getActivity(),"加载完成！",Toast.LENGTH_LONG).show();
 //                    }
-                    belleAdapter.notifyDataSetChanged();
+                    saunaAdapter.notifyDataSetChanged();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

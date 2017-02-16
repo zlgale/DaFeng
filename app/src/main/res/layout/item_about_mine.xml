@@ -82,7 +82,33 @@
                         android:textColor="@color/black" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
 
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/per_4_x3" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="1dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="贵宾专区"
+                        android:drawableBottom="@mipmap/line_1"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -161,7 +187,7 @@
                         android:layout_marginRight="1dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="我的开车"
+                        android:text="一起开车"
                         android:drawableBottom="@mipmap/line_1"
                         android:textColor="@color/black" />
 

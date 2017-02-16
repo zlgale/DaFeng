@@ -1,36 +1,34 @@
 package com.zl.dafeng.ui.fragment;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.google.gson.Gson;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import com.zl.dafeng.R;
-import com.zl.dafeng.bo.model.NewsChannelModel;
+import com.zl.dafeng.bo.model.BelleModel;
 import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
+import com.zl.dafeng.ui.adapter.BitchAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
-import com.zl.dafeng.ui.widgetview.navbarview.MDNavBarItemTitleView;
-import com.zl.dafeng.ui.widgetview.navbarview.MDNavBarPopupSortView;
-import com.zl.dafeng.ui.widgetview.navbarview.MDNavBarView;
-import com.zl.dafeng.ui.widgetview.navbarview.NavBarSortModel;
 import com.zl.dafeng.ui.widgetview.navbarview.adapter.MDNavBarSortAdapter;
-import com.zl.dafeng.ui.widgetview.navbarview.impl.INavBarItemView;
-import com.zl.dafeng.ui.widgetview.navbarview.impl.NavBarPopupSelectListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,10 +57,15 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
     RecyclerView swipeTarget;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
-    @BindView(R.id.mdNavBarView)
-    MDNavBarView mdNavBarView;
     private List list;
     private MDNavBarSortAdapter adapter;
+
+    private BitchAdapter bitchAdapter;
+    private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
+    private int PAGE_INDEX = 1;
+
+    private int PAGE_SIZE = 10;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +78,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     protected void initData() {
-//        getNewsChannelList();
-
-//        initListView();
-        initNavBarView();
+        getBellePicList();
     }
 
     @Override
@@ -86,96 +86,40 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
         leftText.setVisibility(View.VISIBLE);
         leftText.setText("苏州市");
         toolBarTitle.setText("苏妹儿");
+
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
+        swipeTarget.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        bitchAdapter = new BitchAdapter(getActivity(), NewslistBeanList);
+        // 1、设置显现效果动画（渐显、缩放、从下到上，从左到右、从右到左）也可以自定义
+        bitchAdapter.openLoadAnimation(new BaseAnimation() {
+            @Override
+            public Animator[] getAnimators(View view) {
+                return new Animator[]{
+                        ObjectAnimator.ofFloat(view, "scaleY", 1, 1.5f, 1),
+                        ObjectAnimator.ofFloat(view, "scaleX", 1, 1.5f, 1)
+                };
+            }
+        });
+        //添加分割线
+        swipeTarget.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getActivity())
+                        .color(getActivity().getResources().getColor(R.color.screen_background_color))
+                        .sizeResId(R.dimen.divider)
+                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+                        .build());
+        // 3、添加空布局
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) swipeTarget.getParent(), false);
+        bitchAdapter.setEmptyView(emptyView);
+        // 4、使用它加载更多
+        swipeTarget.setAdapter(bitchAdapter);
 
     }
-    private void initNavBarView() {
 
-        INavBarItemView itemViewAdress = new MDNavBarItemTitleView(getActivity());
-        itemViewAdress.setTitle("地区");
-//        itemViewAdress.setTitleColorSelect(Color.RED);
-
-        INavBarItemView itemViewTime = new MDNavBarItemTitleView(getActivity());
-        itemViewTime.setTitle("时间段");
-//        itemViewTime.setTitleColorSelect(Color.RED);
-
-        INavBarItemView itemViewFilter = new MDNavBarItemTitleView(getActivity());
-        itemViewFilter.setTitle("筛选");
-//        itemViewFilter.setTitleColorSelect(Color.RED);
-
-        List list = new ArrayList();
-        list.add(itemViewAdress);
-        list.add(itemViewTime);
-        list.add(itemViewFilter);
-
-        mdNavBarView.setNavBarItemView(list);
-        mdNavBarView.setNavBarViewBGColor(Color.WHITE);
-
-        MDNavBarPopupSortView sortView = new MDNavBarPopupSortView(getActivity());
-        sortView.setBackgroundColor(Color.RED);
-        sortView.setNavBarPopupViewHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        sortView.setOnNavBarPopupSelectListener(new NavBarPopupSelectListener() {
-            @Override
-            public void onSelect(View view, int index, Object itemData) {
-                mdNavBarView.hide();
-                mdNavBarView.isShowNavBarItemIcon(false, index);
-                NavBarSortModel model = (NavBarSortModel) itemData;
-//                mdNavBarView.setNavBarItemTitle(model.getTitle(), index);
-            }
-        });
-
-        MDNavBarPopupSortView sortView1 = new MDNavBarPopupSortView(getActivity());
-        sortView1.setBackgroundColor(Color.YELLOW);
-        sortView1.setNavBarPopupViewHeight(210);//设置下拉菜单的高度
-        sortView1.setOnNavBarPopupSelectListener(new NavBarPopupSelectListener() {
-            @Override
-            public void onSelect(View view, int index, Object itemData) {
-                mdNavBarView.hide();
-                mdNavBarView.isShowNavBarItemIcon(false, index);
-                NavBarSortModel model = (NavBarSortModel) itemData;
-                mdNavBarView.setNavBarItemTitle(model.getTitle(), index);//更新导航标题
-            }
-        });
-
-        MDNavBarPopupSortView sortView2 = new MDNavBarPopupSortView(getActivity());
-        sortView2.setBackgroundColor(Color.BLUE);
-        sortView2.setNavBarPopupViewHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        sortView2.setOnNavBarPopupSelectListener(new NavBarPopupSelectListener() {
-            @Override
-            public void onSelect(View view, int index, Object itemData) {
-                mdNavBarView.hide();
-                mdNavBarView.isShowNavBarItemIcon(false, index);
-                NavBarSortModel model = (NavBarSortModel) itemData;
-//                mdNavBarView.setNavBarItemTitle(model.getTitle(), index);
-            }
-        });
-
-        List listOperateView = new ArrayList();
-        listOperateView.add(sortView);
-        listOperateView.add(sortView1);
-        listOperateView.add(sortView2);
-        mdNavBarView.setNavBarPopupOperateView(listOperateView);
-    }
-
-//    private void initListView() {
-//        NavBarSortModel model;
-//        list = new ArrayList();
-//        for (int i = 0; i < 50; i++) {
-//            model = new NavBarSortModel();
-//            model.setTitle("title is "+i);
-//            model.setIsSelect(false);
-//            list.add(model);
-//        }
-//
-//        adapter = new MDNavBarSortAdapter(getActivity(), list);
-//        listView.setAdapter(adapter);
-//
-//    }
     /**
-     * 获取新闻频道
+     * 获取美女
      */
-    private void getNewsChannelList() {
+    private void getBellePicList() {
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("showapi_appid", "31566");
@@ -183,6 +127,9 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
         parameters.put("showapi_timestamp", "");
         parameters.put("showapi_sign_method", "");
         parameters.put("showapi_res_gzip", "");
+        parameters.put("num", PAGE_SIZE + "");
+        parameters.put("page", PAGE_INDEX + "");
+        parameters.put("rand", "1");
 
         Novate novate = new Novate.Builder(getActivity())
                 .connectTimeout(8)
@@ -190,7 +137,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
                 .addParameters(parameters)
                 .addLog(true)
                 .build();
-        novate.post(Constant.get_newsChannelList, parameters, new BaseSubscriber<ResponseBody>(getActivity()) {
+        novate.post(Constant.get_bellePicList, parameters, new BaseSubscriber<ResponseBody>(getActivity()) {
 
             @Override
             public void onError(Throwable e) {
@@ -203,11 +150,13 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
 
                 try {
                     String jstr = new String(responseBody.bytes());
-                    NewsChannelModel newsChannelModel = new NewsChannelModel();
-                    newsChannelModel = new Gson().fromJson(jstr, NewsChannelModel.class);
-                    for (int i = 0; i < newsChannelModel.getShowapi_res_body().getChannelList().size(); ++i) {
+                    BelleModel belleModel = new BelleModel();
+                    belleModel = new Gson().fromJson(jstr, BelleModel.class);
+                    for (int i = 0; i < belleModel.getShowapi_res_body().getNewslist().size(); ++i) {
+                        NewslistBeanList.add(belleModel.getShowapi_res_body().getNewslist().get(i));
                     }
-
+                    refreshOrLoad();
+                    bitchAdapter.notifyDataSetChanged();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -248,7 +197,9 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     public void onLoadMore() {
+        PAGE_INDEX += 1;
         swipeToLoadLayout.setLoadingMore(true);
+        getBellePicList();
         swipeToLoadLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -259,7 +210,11 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
 
     @Override
     public void onRefresh() {
+        PAGE_INDEX += 1;
+        PAGE_SIZE = 10;
+        NewslistBeanList.clear();
         swipeToLoadLayout.setRefreshing(true);
+        getBellePicList();
         swipeToLoadLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
