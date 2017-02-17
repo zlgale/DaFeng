@@ -23,8 +23,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            fresco:failureImage="@mipmap/bird"
-            fresco:placeholderImage="@mipmap/bird" />
+            fresco:failureImage="@mipmap/img_empty"
+            fresco:placeholderImage="@mipmap/img_empty" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -18,11 +18,12 @@
         <TextView
             android:id="@+id/left_text"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="15dp"
             android:gravity="center_vertical"
-            android:text="左侧"
+            android:text=""
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="gone" />
 
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:text="中间"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
@@ -45,7 +46,8 @@
             android:layout_centerInParent="true"
             android:layout_gravity="right"
             android:layout_marginRight="15dp"
-            android:text="右侧"
+            android:text=""
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="gone" />
     </RelativeLayout>

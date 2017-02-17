@@ -19,3 +19,33 @@ Drawable drawable= getResources().getDrawable(R.drawable.drawable);
 /// 这一步必须要做,否则不会显示.
 drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
 myTextview.setCompoundDrawables(drawable,null,null,null);
+
+3.Fresco XML中属性
+<com.facebook.drawee.view.SimpleDraweeView
+  android:id="@+id/my_image_view"
+  android:layout_width="20dp"
+  android:layout_height="20dp"
+  fresco:fadeDuration="300"
+  fresco:actualImageScaleType="focusCrop"
+  fresco:placeholderImage="@color/wait_color"
+  fresco:placeholderImageScaleType="fitCenter"
+  fresco:failureImage="@drawable/error"
+  fresco:failureImageScaleType="centerInside"
+  fresco:retryImage="@drawable/retrying"
+  fresco:retryImageScaleType="centerCrop"
+  fresco:progressBarImage="@drawable/progress_bar"
+  fresco:progressBarImageScaleType="centerInside"
+  fresco:progressBarAutoRotateInterval="1000"
+  fresco:backgroundImage="@color/blue"
+  fresco:overlayImage="@drawable/watermark"
+  fresco:pressedStateOverlayImage="@color/red"
+  fresco:roundAsCircle="false"
+  fresco:roundedCornerRadius="1dp"
+  fresco:roundTopLeft="true"
+  fresco:roundTopRight="false"
+  fresco:roundBottomLeft="false"
+  fresco:roundBottomRight="true"
+  fresco:roundWithOverlayColor="@color/corner_color"
+  fresco:roundingBorderWidth="2dp"
+  fresco:roundingBorderColor="@color/border_color"
+/>

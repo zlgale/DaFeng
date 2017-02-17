@@ -84,7 +84,7 @@ public class VideoFragment extends BaseFragment implements OnRefreshListener, On
         videoAdapter = new VideoAdapter(R.layout.item_video, ContentlistBean,getActivity());
 //        videoAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 
-        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) swipeTarget.getParent(), false);
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) swipeTarget.getParent(), false);
         videoAdapter.setEmptyView(emptyView);
         swipeTarget.setAdapter(videoAdapter);
     }

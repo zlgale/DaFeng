@@ -50,10 +50,12 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.NewsChannelActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.activity.MineActivity" />
         <activity
-            android:name=".ui.activity.MineActivity"
-            ></activity>
+            android:name=".ui.activity.GirlDetailActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

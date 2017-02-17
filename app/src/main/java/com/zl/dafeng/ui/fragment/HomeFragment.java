@@ -3,6 +3,7 @@ package com.zl.dafeng.ui.fragment;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +18,9 @@ import android.widget.Toast;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.animation.BaseAnimation;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.gson.Gson;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import com.zl.dafeng.R;
@@ -26,6 +29,7 @@ import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
+import com.zl.dafeng.ui.activity.GirlDetailActivity;
 import com.zl.dafeng.ui.adapter.BitchAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
 import com.zl.dafeng.ui.widgetview.navbarview.adapter.MDNavBarSortAdapter;
@@ -109,11 +113,16 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
                         .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
                         .build());
         // 3、添加空布局
-        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) swipeTarget.getParent(), false);
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) swipeTarget.getParent(), false);
         bitchAdapter.setEmptyView(emptyView);
         // 4、使用它加载更多
         swipeTarget.setAdapter(bitchAdapter);
-
+        swipeTarget.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                getActivity().startActivity(new Intent(getActivity(), GirlDetailActivity.class));
+            }
+        });
     }
 
     /**

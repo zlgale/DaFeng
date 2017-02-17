@@ -139,7 +139,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 //        belleAdapter.addHeaderView(headView);
 //        belleAdapter.addFooterView(footView);
         // 3、添加空布局
-        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.view_empty, (ViewGroup) belleRecycview.getParent(), false);
+        View emptyView = getActivity().getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) belleRecycview.getParent(), false);
         saunaAdapter.setEmptyView(emptyView);
         // 4、使用它加载更多
         belleRecycview.setAdapter(saunaAdapter);
