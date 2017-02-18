@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center|right"
                     android:paddingRight="20dp"
-                    android:text="地址"
+                    android:text="欢乐谷深巷"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_size_16" />
 

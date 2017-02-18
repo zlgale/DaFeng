@@ -39,7 +39,6 @@ dependencies {
     compile 'com.android.support:design:24.0.0'
 
     compile 'com.android.support:cardview-v7:24.0.0'
-//    compile 'com.hedgehog.ratingbar:app:1.1.2'
     // 约束布局
     /**
      * 依赖注入
@@ -76,8 +75,6 @@ dependencies {
     // 1.水波纹点击
     compile 'com.github.traex.rippleeffect:library:1.3'
     //  or compile 'com.balysv:material-ripple:1.0.2'
-    // 2.Material Dialog
-    compile 'me.drakeet.materialdialog:library:1.3.1'
     // 3.时间日历选择器
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     // or compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
@@ -110,31 +107,22 @@ dependencies {
     // 手势缩放
     compile 'com.github.chrisbanes:PhotoView:1.3.0'
     // 圆形图片(可用Fresco替代)
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+//    compile 'de.hdodenhof:circleimageview:2.1.0'
 
     /**
-     * FlycoTabLayout 页卡切换
+     * FlycoTabLayout 轮子
      */
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
-    /**
-     * FlycoTabLayout 状态栏颜色
-     */
     compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
-    /**
-     * BottomBar
-     */
-    compile 'com.roughike:bottom-bar:2.0.2'
+    compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
 
     // ios dialog
     compile 'com.bigkoo:svprogresshud:1.0.2'
-    // NiftyDialogEffects
-    compile 'com.github.sd6352051:NiftyDialogEffects:1.0.0'
     // activity 切换效果
     compile 'com.jude:swipebackhelper:3.1.2'
     // 数据库
     compile 'org.greenrobot:greendao:3.2.0'
 
-//    compile 'com.tamic.novate:novate:1.2+'
     compile 'com.alibaba:fastjson:1.1.56.android'
     // Log日志打印
     compile 'com.orhanobut:logger:1.15'

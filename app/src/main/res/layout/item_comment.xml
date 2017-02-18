@@ -4,7 +4,6 @@
     xmlns:hedgehog="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="1dp"
     android:background="@color/screen_background_color"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
@@ -96,7 +95,7 @@
                     android:textColor="@color/black" />
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -109,21 +108,34 @@
                         android:text="2017-02-17" />
 
                     <TextView
+                        android:id="@+id/praise_dot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/praise_time"
                         android:gravity="center"
                         android:text="·"
                         android:textSize="@dimen/font_size_16"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/observer_reply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="回复" />
-                </LinearLayout>
+                        android:layout_toRightOf="@+id/praise_dot"
+                        android:text="回复"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center|right"
+                        android:text="1楼" />
+                </RelativeLayout>
 
             </LinearLayout>
 

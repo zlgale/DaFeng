@@ -9,6 +9,9 @@
     <color name="toolbar_color">#29A0F6</color>
     <color name="container_background">#EBEBEB</color>
 
+    <color name="bottom_background">#F4F5F6</color>
+    <color name="border_color">#D9D9D9</color>
+
     <color name="fab_color">#1195DB</color>
     <color name="gray_deep">#c9000000</color>
 

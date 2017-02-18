@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.widgetview.CustomToast;
+import com.zl.dafeng.ui.widgetview.dialog.CustomBaseDialog;
 import com.zl.dafeng.util.StatusBarCompat;
 
 import butterknife.BindView;
@@ -47,7 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fresco.initialize(BaseActivity.this);
 
-
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
                 | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         toolBarView = View.inflate(this, R.layout.toolbar, null);
@@ -71,6 +71,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         initStatus();
 
         initialize();
+
+        ActivityCollector.add(BaseActivity.this);
 
     }
 
@@ -103,7 +105,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void setBackViewOnClickListener(final View.OnClickListener l) {
         if(leftText != null){
-            leftText.setOnClickListener(new View.OnClickListener() {
+            leftText.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     l.onClick(v);
@@ -203,7 +205,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_BACK == keyCode && event.getRepeatCount() == 0) {
             if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-                finish();
+                final CustomBaseDialog dialog = new CustomBaseDialog(mContext);
+                dialog.show();
+                dialog.setCanceledOnTouchOutside(true);
+//                finish();
                 return true;
             }
         }
