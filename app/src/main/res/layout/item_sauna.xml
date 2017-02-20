@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:numStars="3"
-                        hedgehog:clickable="true"
+                        hedgehog:clickable="false"
                         hedgehog:halfstart="true"
                         hedgehog:starCount="5"
                         hedgehog:starEmpty="@mipmap/star_empty"

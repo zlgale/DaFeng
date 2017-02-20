@@ -2,6 +2,7 @@ package com.zl.dafeng.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -10,10 +11,11 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.base.BaseActivity;
 import com.zl.dafeng.ui.entity.TabEntity;
+import com.zl.dafeng.ui.fragment.HomeFragment;
 import com.zl.dafeng.ui.fragment.MineFragment;
 import com.zl.dafeng.ui.fragment.SaunaFragment;
 import com.zl.dafeng.ui.fragment.VideoFragment;
-import com.zl.dafeng.ui.fragment.HomeFragment;
+import com.zl.dafeng.ui.widgetview.dialog.CustomBaseDialog;
 
 import java.util.ArrayList;
 
@@ -85,4 +87,21 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (KeyEvent.KEYCODE_BACK == keyCode && event.getRepeatCount() == 0) {
+            CustomBaseDialog dialog = new CustomBaseDialog(mContext);
+            dialog.show();
+            dialog.setCanceledOnTouchOutside(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 }

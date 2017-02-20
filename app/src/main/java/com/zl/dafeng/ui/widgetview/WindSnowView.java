@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * <飘雪View,可定义多种图片>
+ * <飘雪动画View,可定义多种图片>
  * @author : dafeng.
  *
  */

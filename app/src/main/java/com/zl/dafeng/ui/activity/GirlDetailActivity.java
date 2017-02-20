@@ -1,5 +1,6 @@
 package com.zl.dafeng.ui.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import com.zl.dafeng.ui.adapter.CommentAdapter;
 import com.zl.dafeng.ui.adapter.GirlIconAdapter;
 import com.zl.dafeng.ui.base.BaseActivity;
 import com.zl.dafeng.ui.widgetview.RatingBar;
+import com.zl.dafeng.ui.widgetview.dialog.IOSTaoBaoDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,14 +62,16 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
     RecyclerView RvComment;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
-//    @BindView(R.id.tv_nickname)
-//    TextView tvNickname;
-//    @BindView(R.id.tv_adress)
-//    TextView tvAdress;
-//    @BindView(R.id.tv_time)
-//    TextView tvTime;
-//    @BindView(R.id.tv_bardian_sign)
-//    TextView tvBardianSign;
+    @BindView(R.id.comment_text)
+    TextView commentText;
+    @BindView(R.id.comment_img)
+    SimpleDraweeView commentImg;
+    @BindView(R.id.comment_num)
+    TextView commentNum;
+    @BindView(R.id.comment_collect)
+    SimpleDraweeView commentCollect;
+    @BindView(R.id.comment_share)
+    SimpleDraweeView commentShare;
 
     private GirlIconAdapter girlIconAdapter;
     private CommentAdapter commentAdapter;
@@ -74,6 +79,10 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
     private int PAGE_INDEX = 1;
 
     private int PAGE_SIZE = 7;
+
+    private String mShareLink = "github";
+    private boolean isCollect = true;
+    InputMethodManager inputMethodManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +146,7 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
         ViewHolder viewHolder = new ViewHolder(headerView);
         viewHolder.tvNickname.setText("大乔");
     }
+
     private void refreshOrLoad() {
         if (swipeToLoadLayout == null) {
             return;
@@ -161,10 +171,12 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
             }
         }, 2000);
     }
+
     @Override
     public void onRefresh() {
 
     }
+
     @OnClick(R.id.left_text)
     public void onClick() {
         finish();
@@ -216,6 +228,38 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
             }
         });
 
+    }
+
+    @OnClick({R.id.comment_text, R.id.comment_img, R.id.comment_collect, R.id.comment_share})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.comment_text:
+                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) RvComment.getParent());
+                dialog.show();
+                break;
+            case R.id.comment_img:
+
+                break;
+            case R.id.comment_collect:
+                if(isCollect){
+                    commentCollect.setBackground(getResources().getDrawable(R.mipmap.img_collect_ok));
+                    showToast("收藏成功");
+                    isCollect = false;
+                }else{
+                    commentCollect.setBackground(getResources().getDrawable(R.mipmap.img_collect));
+                    showToast("取消收藏");
+                    isCollect = true;
+                }
+
+                break;
+            case R.id.comment_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share));
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_contents, getString(R.string.app_name), mShareLink));
+                startActivity(Intent.createChooser(intent, this.getTitle()));
+                break;
+        }
     }
 
 

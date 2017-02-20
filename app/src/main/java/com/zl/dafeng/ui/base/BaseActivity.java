@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.widgetview.CustomToast;
-import com.zl.dafeng.ui.widgetview.dialog.CustomBaseDialog;
 import com.zl.dafeng.util.StatusBarCompat;
 
 import butterknife.BindView;
@@ -204,15 +203,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_BACK == keyCode && event.getRepeatCount() == 0) {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-                final CustomBaseDialog dialog = new CustomBaseDialog(mContext);
-                dialog.show();
-                dialog.setCanceledOnTouchOutside(true);
-//                finish();
+//            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+                finish();
                 return true;
-            }
+//            }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 
     @Override
@@ -223,4 +225,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+        }
+    }
 }

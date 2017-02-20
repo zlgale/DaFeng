@@ -44,13 +44,14 @@ public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
             @Override
             public void onClick(View v) {
                 dismiss();
-                ActivityCollector.finishAll();
+
             }
         });
         mTvExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
+                ActivityCollector.finishAll();
             }
         });
     }

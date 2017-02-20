@@ -10,7 +10,7 @@ import com.aspsine.swipetoloadlayout.SwipeTrigger;
 import com.zl.dafeng.R;
 import com.zl.dafeng.ui.widgetview.drawable.yalantis.BaseRefreshDrawable;
 import com.zl.dafeng.ui.widgetview.drawable.yalantis.SunRefreshDrawable;
-import com.zl.dafeng.util.DensityUtil;
+import com.zl.dafeng.util.ScreenUtils;
 
 /**
  * Created by Aspsine on 2015/11/5.
@@ -40,7 +40,7 @@ public class YalantisPhoenixRefreshHeaderView extends FrameLayout implements Swi
     protected void onFinishInflate() {
         super.onFinishInflate();
         ivRefresh = (ImageView) findViewById(R.id.ivRefresh);
-        mDrawable = new SunRefreshDrawable(getContext(), this, mTriggerOffset, DensityUtil.getScreenWidth(getContext()));
+        mDrawable = new SunRefreshDrawable(getContext(), this, mTriggerOffset, ScreenUtils.getScreenWidth(getContext()));
         ivRefresh.setBackgroundDrawable(mDrawable);
     }
 

@@ -6,8 +6,6 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.Handler;
@@ -100,28 +98,4 @@ public class MyApplication extends Application {
 
         }
     }
-
-    //版本名
-    public static String getVersionName() {
-        return getPackageInfo().versionName;
-    }
-
-    //版本号
-    public static float getVersionCode() {
-        return getPackageInfo().versionCode;
-    }
-
-    private static PackageInfo getPackageInfo() {
-        PackageInfo pi = null;
-        try {
-            PackageManager pm = mcontext.getPackageManager();
-            pi = pm.getPackageInfo(mcontext.getPackageName(),
-                    PackageManager.GET_CONFIGURATIONS);
-            return pi;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return pi;
-    }
-
 }
