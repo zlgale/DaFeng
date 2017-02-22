@@ -1,7 +1,6 @@
 package com.zl.dafeng.ui.widgetview;
 
 import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -242,6 +241,54 @@ public class PinchImageView extends ImageView  {
      */
     public int getPinchMode() {
         return mPinchMode;
+    }
+
+    /**
+     * 与ViewPager结合的时候使用
+     * @param direction
+     * @return
+     */
+    @Override
+    public boolean canScrollHorizontally(int direction) {
+        if (mPinchMode == PinchImageView.PINCH_MODE_SCALE) {
+            return true;
+        }
+        RectF bound = getImageBound(null);
+        if (bound == null) {
+            return false;
+        }
+        if (bound.isEmpty()) {
+            return false;
+        }
+        if (direction > 0) {
+            return bound.right > getWidth();
+        } else {
+            return bound.left < 0;
+        }
+    }
+
+    /**
+     * 与ViewPager结合的时候使用
+     * @param direction
+     * @return
+     */
+    @Override
+    public boolean canScrollVertically(int direction) {
+        if (mPinchMode == PinchImageView.PINCH_MODE_SCALE) {
+            return true;
+        }
+        RectF bound = getImageBound(null);
+        if (bound == null) {
+            return false;
+        }
+        if (bound.isEmpty()) {
+            return false;
+        }
+        if (direction > 0) {
+            return bound.bottom > getHeight();
+        } else {
+            return bound.top < 0;
+        }
     }
 
 
@@ -602,7 +649,6 @@ public class PinchImageView extends ImageView  {
      *
      * 将mask从一个rect动画到另外一个rect
      */
-    @SuppressLint("NewApi")
     private class MaskAnimator extends ValueAnimator implements ValueAnimator.AnimatorUpdateListener {
 
         /**
@@ -1166,7 +1212,6 @@ public class PinchImageView extends ImageView  {
      * 速度逐渐衰减,每帧速度衰减为原来的FLING_DAMPING_FACTOR,当速度衰减到小于1时停止.
      * 当图片不能移动时,动画停止.
      */
-    @SuppressLint("NewApi")
     private class FlingAnimator extends ValueAnimator implements ValueAnimator.AnimatorUpdateListener {
 
         /**
@@ -1209,7 +1254,6 @@ public class PinchImageView extends ImageView  {
      *
      * 在给定时间内从一个矩阵的变化逐渐动画到另一个矩阵的变化
      */
-    @SuppressLint("NewApi")
     private class ScaleAnimator extends ValueAnimator implements ValueAnimator.AnimatorUpdateListener {
 
         /**

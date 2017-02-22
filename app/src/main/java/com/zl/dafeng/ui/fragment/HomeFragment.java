@@ -89,7 +89,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener, OnL
     protected void initView() {
         leftText.setVisibility(View.VISIBLE);
         leftText.setText("苏州市");
-        toolBarTitle.setText("苏妹儿");
+        toolBarTitle.setText(getString(R.string.title_home));
 
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);

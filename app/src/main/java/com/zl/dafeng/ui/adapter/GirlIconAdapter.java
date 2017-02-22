@@ -3,7 +3,6 @@ package com.zl.dafeng.ui.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.view.View;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -38,7 +37,7 @@ public class GirlIconAdapter extends BaseQuickAdapter<BelleModel.ShowapiResBodyB
         imgGirlIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击了", Toast.LENGTH_LONG).show();
+
             }
         });
     }

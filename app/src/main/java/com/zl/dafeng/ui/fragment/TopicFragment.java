@@ -3,6 +3,7 @@ package com.zl.dafeng.ui.fragment;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,16 +18,18 @@ import android.widget.Toast;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.animation.BaseAnimation;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.gson.Gson;
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import com.zl.dafeng.R;
 import com.zl.dafeng.bo.model.BelleModel;
 import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
-import com.zl.dafeng.ui.adapter.SaunaAdapter;
+import com.zl.dafeng.ui.activity.TopicDetailActivity;
+import com.zl.dafeng.ui.adapter.TopicAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
 
 import java.io.IOException;
@@ -41,7 +44,7 @@ import okhttp3.ResponseBody;
 
 
 @SuppressLint("ValidFragment")
-public class SaunaFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
+public class TopicFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.left_text)
     TextView leftText;
     @BindView(R.id.toolBar_title)
@@ -57,7 +60,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
 
-    private SaunaAdapter saunaAdapter;
+    private TopicAdapter topicAdapter;
     private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
 
     private int PAGE_INDEX = 1;
@@ -73,7 +76,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_sauna;
+        return R.layout.fragment_topic;
     }
 
     @Override
@@ -84,7 +87,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 
     @Override
     protected void initView() {
-        toolBarTitle.setText(getString(R.string.title_sauna));
+        toolBarTitle.setText(getString(R.string.title_topic));
 
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
@@ -98,12 +101,12 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
          *  .drawable(R.drawable.sample)
          */
         //添加分割线
-        belleRecycview.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.screen_background_color))
-                        .sizeResId(R.dimen.divider)
-                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
-                        .build());
+//        belleRecycview.addItemDecoration(
+//                new HorizontalDividerItemDecoration.Builder(getActivity())
+//                        .color(getActivity().getResources().getColor(R.color.screen_background_color))
+//                        .sizeResId(R.dimen.divider)
+//                        .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+//                        .build());
 
 //        belleRecycview.addItemDecoration(
 //                new VerticalDividerItemDecoration.Builder(getActivity())
@@ -115,7 +118,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
         /**
          * BaseRecyclerViewAdapterHelper 使用技巧
          */
-        saunaAdapter = new SaunaAdapter(getActivity(), NewslistBeanList);
+        topicAdapter = new TopicAdapter(getActivity(), NewslistBeanList);
 
         // 1、设置显现效果动画（渐显、缩放、从下到上，从左到右、从右到左）也可以自定义
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
@@ -124,7 +127,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
 //        belleAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
         // 自定义动画如此轻松
-        saunaAdapter.openLoadAnimation(new BaseAnimation() {
+        topicAdapter.openLoadAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{
@@ -140,9 +143,15 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 //        belleAdapter.addFooterView(footView);
         // 3、添加空布局
         View emptyView = getActivity().getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) belleRecycview.getParent(), false);
-        saunaAdapter.setEmptyView(emptyView);
+        topicAdapter.setEmptyView(emptyView);
         // 4、使用它加载更多
-        belleRecycview.setAdapter(saunaAdapter);
+        belleRecycview.setAdapter(topicAdapter);
+        belleRecycview.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                getActivity().startActivity(new Intent(getActivity(), TopicDetailActivity.class));
+            }
+        });
     }
 
     @Override
@@ -223,7 +232,7 @@ public class SaunaFragment extends BaseFragment implements OnRefreshListener, On
 //                        swipeToLoadLayout.setLoadingMore(false);
 ////                        Toast.makeText(getActivity(),"加载完成！",Toast.LENGTH_LONG).show();
 //                    }
-                    saunaAdapter.notifyDataSetChanged();
+                    topicAdapter.notifyDataSetChanged();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

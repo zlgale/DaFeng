@@ -1,111 +1,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/screen_background_color"
     android:orientation="vertical">
-
-    <!--第一板块-头像-->
-    <android.support.v7.widget.CardView
-        android:id="@+id/icon_cardview"
+    <!--问题-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingBottom="5dp">
+        android:layout_height="120dp"
+        android:background="@color/toolbar_color"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="中国为什么没有先治病后付钱的医院?"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_20" />
 
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/Rv_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
-
-            </android.support.v7.widget.RecyclerView>
-
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/line_1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_rectangle_with_corners"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp">
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_sex"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@mipmap/sex_girl" />
-
-                        <TextView
-                            android:id="@+id/tv_age"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:text="21"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/font_size_12" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_constellation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/corners_light_blue"
-                        android:text="金牛座"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_size_12" />
-                </LinearLayout>
-
-                <com.zl.dafeng.ui.widgetview.RatingBar xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/ratingbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:numStars="3"
-                    android:paddingLeft="10dp"
-                    hedgehog:clickable="false"
-                    hedgehog:halfstart="false"
-                    hedgehog:starCount="5"
-                    hedgehog:starEmpty="@mipmap/heart_gray"
-                    hedgehog:starFill="@mipmap/heart_red"
-                    hedgehog:starHalf="@mipmap/heart_half"
-                    hedgehog:starImageHeight="20dp"
-                    hedgehog:starImagePadding="0dp"
-                    hedgehog:starImageWidth="20dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
+    <!--提问者名片-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,7 +31,8 @@
         android:layout_above="@+id/layout_bottom"
         android:layout_below="@+id/icon_cardview"
         android:layout_marginTop="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -159,8 +78,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
-            android:gravity="center_vertical"
             android:background="@drawable/bg_rectangle_with_stroke_only"
+            android:gravity="center_vertical"
             android:hint="写评论..."
             android:paddingLeft="10dp"
             android:textColorHint="@color/darkgray"
@@ -221,4 +140,95 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/icon_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="89dp"
+        android:background="@color/white"
+        android:elevation="50dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/author_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/default_icon"
+                fresco:failureImage="@mipmap/default_icon"
+                fresco:placeholderImage="@mipmap/default_icon" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/author_icon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|bottom"
+                    android:paddingBottom="3dp"
+                    android:text="Sunshine"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/author_identity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|top"
+                    android:paddingTop="3dp"
+                    android:text="资深专家"
+                    android:textColor="@color/dimgray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_rectangle_with_corners_stroke_blue"
+                android:orientation="horizontal">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    fresco:placeholderImage="@mipmap/img_add"
+                    fresco:placeholderImageScaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="center_vertical"
+                    android:text="关注"
+                    android:textColor="@color/primary_color" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
 </RelativeLayout>

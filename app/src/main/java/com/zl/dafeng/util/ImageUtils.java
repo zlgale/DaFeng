@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 
+
 /**
  * Created by zhy on 15/11/6.
  */
@@ -193,4 +194,34 @@ public class ImageUtils
         return value;
 
     }
+//    /**
+//     * 保存图片
+//     */
+//    public static void saveImage(final Context context, PhotoView img){
+//        // sd卡存在
+//        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+//            BitmapDrawable bmpDrawable = (BitmapDrawable)img.getDrawable();
+//            if(bmpDrawable!=null){
+//                Bitmap bmp = bmpDrawable.getBitmap();
+//                if (bmp != null) {
+//                    try {
+//                        ContentResolver cr = context.getContentResolver();
+//                        String url = MediaStore.Images.Media.insertImage(cr, bmp,
+//                                String.valueOf(System.currentTimeMillis()), "");
+//                        CustomToast.showShortToast(context,"保存成功");
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }else {
+//                    CustomToast.showShortToast(context,"保存失败");
+//                }
+//            }else {
+//                CustomToast.showShortToast(context,"保存失败");
+//            }
+//        }else {
+//            CustomToast.showShortToast(context,"保存失败");
+//        }
+//        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://"+ Environment.getExternalStorageDirectory())));
+//    }
 }

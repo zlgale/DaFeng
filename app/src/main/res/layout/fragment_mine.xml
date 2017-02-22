@@ -11,12 +11,12 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_layout_fragment_mine"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             app:collapsedTitleGravity="center"
             app:contentScrim="@color/toolbar_color"
@@ -27,8 +27,7 @@
                 android:id="@+id/windsnow_fly"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/primary_color"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@mipmap/snow_bg"
                 app:snow_bitmap="@mipmap/snowflake"
                 app:snow_count="40"
                 app:snow_initToLeft="15dp"
@@ -42,12 +41,14 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
-                fresco:roundingBorderWidth="2dp"
-                fresco:roundingBorderColor="@color/lightslategray"
+                fresco:roundingBorderWidth="1dp"
+                fresco:roundingBorderColor="@color/darkgray"
                 fresco:placeholderImage="@mipmap/bird"
                 fresco:roundAsCircle="true"
+                android:visibility="visible"
                 fresco:actualImageScaleType="focusCrop"
-                fresco:roundedCornerRadius="180dp"/>
+                />
+            <!--fresco:roundedCornerRadius="180dp"-->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/fragment_mine_toolbar"
                 android:layout_width="match_parent"
