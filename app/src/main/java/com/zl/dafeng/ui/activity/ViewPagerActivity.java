@@ -45,18 +45,6 @@ public class ViewPagerActivity extends BaseActivity {
         return R.layout.activity_view_pager;
     }
     @Override
-    protected void setTitle() {
-        super.setTitle();
-//        setBackViewVisiable(true);
-        setBackViewOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-    @Override
     protected void initialize() {
         for (String title : mTitles) {
             mFragments.add(new CardFragment());

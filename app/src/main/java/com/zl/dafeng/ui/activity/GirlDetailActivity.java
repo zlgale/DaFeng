@@ -1,8 +1,9 @@
 package com.zl.dafeng.ui.activity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +76,18 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
     SimpleDraweeView commentCollect;
     @BindView(R.id.comment_share)
     SimpleDraweeView commentShare;
+    @BindView(R.id.left_icon)
+    SimpleDraweeView leftIcon;
+    @BindView(R.id.icon_cardview)
+    CardView iconCardview;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
+    @BindView(R.id.ivSuccess)
+    ImageView ivSuccess;
+    @BindView(R.id.tvLoadMore)
+    TextView tvLoadMore;
+    @BindView(R.id.layout_bottom)
+    LinearLayout layoutBottom;
 
     private GirlIconAdapter girlIconAdapter;
     private CommentAdapter commentAdapter;
@@ -101,10 +117,12 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
 
         // 标题设置
         leftText.setVisibility(View.VISIBLE);
-        Drawable drawable = getResources().getDrawable(R.mipmap.back);
-        // 这一步必须要做,否则不会显示.
-        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-        leftText.setCompoundDrawables(drawable, null, null, null);
+        leftIcon.setVisibility(View.VISIBLE);
+        leftIcon.setBackground(ContextCompat.getDrawable(this, R.mipmap.back));
+//        Drawable drawable = getResources().getDrawable(R.mipmap.back);
+//        // 这一步必须要做,否则不会显示.
+//        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//        leftText.setCompoundDrawables(drawable, null, null, null);
         leftText.setText("小乔");
         // 头像加载
         RvIcon.setLayoutManager(new GridLayoutManager(GirlDetailActivity.this, 4));
@@ -151,14 +169,16 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
         ViewHolder viewHolder = new ViewHolder(headerView);
         viewHolder.tvNickname.setText("大乔");
     }
+
     // 美女图册Recycview 点击事件
-    private void rvIconItemClickListenner(){
+    private void rvIconItemClickListenner() {
         RvIcon.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
             }
         });
     }
+
     private void refreshOrLoad() {
         if (swipeToLoadLayout == null) {
             return;
@@ -189,7 +209,7 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
 
     }
 
-    @OnClick(R.id.left_text)
+    @OnClick({R.id.left_text, R.id.left_icon})
     public void onClick() {
         finish();
     }

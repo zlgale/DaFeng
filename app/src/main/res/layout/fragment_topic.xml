@@ -6,8 +6,7 @@
     android:clipToPadding="true"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
 
     <com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

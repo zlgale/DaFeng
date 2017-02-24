@@ -3,9 +3,10 @@
     android:layout_height="wrap_content"
     android:background="@color/screen_background_color"
     android:orientation="vertical">
-
+    <include layout="@layout/toolbar"/>
     <!--第一板块-头像-->
     <android.support.v7.widget.CardView
+        android:layout_below="@+id/toolbar"
         android:id="@+id/icon_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

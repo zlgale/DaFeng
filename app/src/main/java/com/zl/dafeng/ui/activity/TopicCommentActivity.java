@@ -1,7 +1,6 @@
 package com.zl.dafeng.ui.activity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -80,6 +79,10 @@ public class TopicCommentActivity extends BaseActivity implements OnRefreshListe
     LinearLayout layoutBottom;
     @BindView(R.id.left_text)
     TextView leftText;
+    @BindView(R.id.left_icon)
+    SimpleDraweeView leftIcon;
+    @BindView(R.id.topic_content)
+    TextView topicContent;
     private CommentAdapter commentAdapter;
     private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
     private int PAGE_INDEX = 1;
@@ -107,10 +110,10 @@ public class TopicCommentActivity extends BaseActivity implements OnRefreshListe
 
         // 标题设置
         leftText.setVisibility(View.VISIBLE);
-        Drawable drawable = getResources().getDrawable(R.mipmap.back);
-        // 这一步必须要做,否则不会显示.
-        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-        leftText.setCompoundDrawables(drawable, null, null, null);
+//        Drawable drawable = getResources().getDrawable(R.mipmap.back);
+//        // 这一步必须要做,否则不会显示.
+//        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//        leftText.setCompoundDrawables(drawable, null, null, null);
         leftText.setText("回答");
         // 头像点击事件
         getBellePicList();
@@ -181,11 +184,6 @@ public class TopicCommentActivity extends BaseActivity implements OnRefreshListe
 
     }
 
-    @OnClick(R.id.left_text)
-    public void onClick() {
-        finish();
-    }
-
     /**
      * 获取美女图片
      */
@@ -234,9 +232,15 @@ public class TopicCommentActivity extends BaseActivity implements OnRefreshListe
 
     }
 
-    @OnClick({R.id.comment_text, R.id.comment_img, R.id.comment_collect, R.id.comment_share})
+    @OnClick({R.id.left_icon, R.id.left_text, R.id.comment_text, R.id.comment_img, R.id.comment_collect, R.id.comment_share})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.left_icon:
+                finish();
+                break;
+            case R.id.left_text:
+                finish();
+                break;
             case R.id.comment_text:
                 final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) swipeTarget.getParent());
                 dialog.show();

@@ -1,7 +1,6 @@
 package com.zl.dafeng.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -26,28 +25,6 @@ public class BottomBarActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-    }
-
-    @Override
-    protected void setTitle() {
-        super.setTitle();
-        setBackViewOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        setTitleText("哈哈");
-        setLeftText("关闭");
-        setRightText("右侧");
-        setRightTextOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                showToast("右侧点击事件");
-            }
-        });
     }
 
     @Override

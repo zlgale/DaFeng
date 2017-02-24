@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,7 @@ import com.zl.dafeng.dafeng.Constant;
 import com.zl.dafeng.novate.BaseSubscriber;
 import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
+import com.zl.dafeng.ui.activity.AskActivity;
 import com.zl.dafeng.ui.activity.TopicDetailActivity;
 import com.zl.dafeng.ui.adapter.TopicAdapter;
 import com.zl.dafeng.ui.base.BaseFragment;
@@ -40,6 +42,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.ResponseBody;
 
 
@@ -55,8 +58,8 @@ public class TopicFragment extends BaseFragment implements OnRefreshListener, On
     Toolbar toolbar;
     @BindView(R.id.swipe_target)
     RecyclerView belleRecycview;
-//    @BindView(R.id.fab)
-//    FloatingActionButton fab;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
 
@@ -241,9 +244,10 @@ public class TopicFragment extends BaseFragment implements OnRefreshListener, On
 
     }
 
-//    @OnClick(R.id.fab)
-//    public void onClick() {
-//    }
+    @OnClick(R.id.fab)
+    public void onClick() {
+        startActivity(new Intent(getActivity(), AskActivity.class));
+    }
 
     @Override
     public void onLoadMore() {

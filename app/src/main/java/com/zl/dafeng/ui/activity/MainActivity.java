@@ -43,12 +43,6 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void setTitle() {
-        super.setTitle();
-        setHeadViewVisiable(false);
-    }
-
-    @Override
     protected void initialize() {
         allFragments.add(new HomeFragment());
         allFragments.add(new TopicFragment());

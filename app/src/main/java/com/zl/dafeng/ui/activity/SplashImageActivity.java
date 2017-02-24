@@ -45,12 +45,6 @@ public class SplashImageActivity extends BaseActivity {
     };
 
     @Override
-    protected void setTitle() {
-        super.setTitle();
-        setHeadViewVisiable(false);
-    }
-
-    @Override
     protected int getLayout() {
         return R.layout.activity_splash_ll;
     }
