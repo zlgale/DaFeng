@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
+public class TopicDetailDialog extends BottomBaseDialog<TopicDetailDialog> {
 
     @BindView(R.id.comment_edit)
     EditText commentEdit;
@@ -24,17 +24,17 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
     TextView commentSend;
     InputMethodManager inputMethodManager;
 
-    public IOSTaoBaoDialog(Context context, View animateView) {
+    public TopicDetailDialog(Context context, View animateView) {
         super(context, animateView);
     }
 
-    public IOSTaoBaoDialog(Context context) {
+    public TopicDetailDialog(Context context) {
         super(context);
     }
 
     @Override
     public View onCreateView() {
-        View inflate = View.inflate(mContext, R.layout.dialog_ios_taobao, null);
+        View inflate = View.inflate(mContext, R.layout.dialog_topicdetail, null);
         ButterKnife.bind(this, inflate);
 
         return inflate;

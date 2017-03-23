@@ -31,7 +31,7 @@ import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
 import com.zl.dafeng.ui.adapter.CommentAdapter;
 import com.zl.dafeng.ui.base.BaseActivity;
-import com.zl.dafeng.ui.widgetview.dialog.IOSTaoBaoDialog;
+import com.zl.dafeng.ui.widgetview.dialog.GirlDetailDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -242,7 +242,7 @@ public class TopicCommentActivity extends BaseActivity implements OnRefreshListe
                 finish();
                 break;
             case R.id.comment_text:
-                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) swipeTarget.getParent());
+                final GirlDetailDialog dialog = new GirlDetailDialog(mContext, (View) swipeTarget.getParent());
                 dialog.show();
                 break;
             case R.id.comment_img:

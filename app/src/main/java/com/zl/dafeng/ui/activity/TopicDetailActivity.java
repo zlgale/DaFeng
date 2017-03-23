@@ -21,6 +21,7 @@ import com.zl.dafeng.novate.Novate;
 import com.zl.dafeng.novate.Throwable;
 import com.zl.dafeng.ui.adapter.CommentAdapter;
 import com.zl.dafeng.ui.base.BaseActivity;
+import com.zl.dafeng.ui.widgetview.dialog.TopicDetailDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,6 +61,8 @@ public class TopicDetailActivity extends BaseActivity {
     TextView leftText;
     @BindView(R.id.left_icon)
     SimpleDraweeView leftIcon;
+    @BindView(R.id.topic_content)
+    TextView topicContent;
     private CommentAdapter commentAdapter;
     private List<BelleModel.ShowapiResBodyBean.NewslistBean> NewslistBeanList = new ArrayList<BelleModel.ShowapiResBodyBean.NewslistBean>();
     private int PAGE_INDEX = 1;
@@ -143,7 +146,7 @@ public class TopicDetailActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.left_icon, R.id.left_text,R.id.comment_text, R.id.comment_img, R.id.comment_collect, R.id.comment_share})
+    @OnClick({R.id.left_icon, R.id.left_text, R.id.comment_text, R.id.comment_img, R.id.comment_collect, R.id.comment_share})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.left_icon:
@@ -153,8 +156,8 @@ public class TopicDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.comment_text:
-//                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) swipeTarget.getParent());
-//                dialog.show();
+                final TopicDetailDialog dialog = new TopicDetailDialog(mContext, (View) topicContent.getParent());
+                dialog.show();
                 break;
             case R.id.comment_img:
 

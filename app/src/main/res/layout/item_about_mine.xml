@@ -43,6 +43,7 @@
 
 
                     <TextView
+                        android:id="@+id/text_collect"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
@@ -71,6 +72,7 @@
 
 
                     <TextView
+                        android:id="@+id/text_recommend"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
@@ -98,6 +100,7 @@
 
 
                     <TextView
+                        android:id="@+id/text_prefecture"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
@@ -253,14 +256,15 @@
 
 
                     <TextView
+                        android:id="@+id/text_update"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="1dp"
+                        android:drawableBottom="@mipmap/line_1"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="设置"
-                        android:drawableBottom="@mipmap/line_1"
+                        android:text="版本更新"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -281,6 +285,7 @@
 
 
                     <TextView
+                        android:id="@+id/text_aboutme"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="right"

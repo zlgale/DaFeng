@@ -87,3 +87,6 @@
     // Log日志打印
     compile 'com.orhanobut:logger:1.15'
 //    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+
+
+compile 'org.greenrobot:eventbus:3.0.0'

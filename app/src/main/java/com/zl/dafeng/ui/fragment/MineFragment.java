@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.tencent.bugly.beta.Beta;
 import com.zl.dafeng.R;
 import com.zl.dafeng.service.interfaces.AppBarStateChangeListener;
 import com.zl.dafeng.ui.activity.MineActivity;
@@ -42,6 +42,16 @@ public class MineFragment extends BaseFragment {
     TextView fragmentMineRightText;
     @BindView(R.id.windsnow_fly)
     WindSnowView windsnowFly;
+    @BindView(R.id.text_collect)
+    TextView textCollect;
+    @BindView(R.id.text_recommend)
+    TextView textRecommend;
+    @BindView(R.id.text_prefecture)
+    TextView textPrefecture;
+    @BindView(R.id.text_update)
+    TextView textUpdate;
+    @BindView(R.id.text_aboutme)
+    TextView textAboutme;
 
     private String mShareLink = "github";
     private boolean isSnowOrMoney = false;
@@ -111,7 +121,8 @@ public class MineFragment extends BaseFragment {
         return rootView;
     }
 
-    @OnClick({R.id.my_head, R.id.fragment_mine_right_text, R.id.windsnow_fly})
+    @OnClick({R.id.my_head, R.id.fragment_mine_right_text, R.id.windsnow_fly, R.id.text_collect, R.id.text_recommend, R.id.text_prefecture,
+            R.id.text_update, R.id.text_aboutme})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.my_head:
@@ -129,7 +140,22 @@ public class MineFragment extends BaseFragment {
                     isSnowOrMoney = false;
                 }
                 break;
+            case R.id.text_collect:
+
+//                CrashReport.testJavaCrash();
+                break;
+            case R.id.text_recommend:
+//                CrashReport.testANRCrash();
+                break;
+            case R.id.text_prefecture:
+//                CrashReport.testNativeCrash();
+                break;
+            case R.id.text_update:
+                Beta.checkUpgrade();
+                break;
+            case R.id.text_aboutme:
+                startActivity(new Intent(getActivity(), MineActivity.class));
+                break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ import com.zl.dafeng.ui.adapter.CommentAdapter;
 import com.zl.dafeng.ui.adapter.GirlIconAdapter;
 import com.zl.dafeng.ui.base.BaseActivity;
 import com.zl.dafeng.ui.widgetview.RatingBar;
-import com.zl.dafeng.ui.widgetview.dialog.IOSTaoBaoDialog;
+import com.zl.dafeng.ui.widgetview.dialog.GirlDetailDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -266,7 +266,7 @@ public class GirlDetailActivity extends BaseActivity implements OnRefreshListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.comment_text:
-                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) RvComment.getParent());
+                final GirlDetailDialog dialog = new GirlDetailDialog(mContext, (View) RvComment.getParent());
                 dialog.show();
                 break;
             case R.id.comment_img:

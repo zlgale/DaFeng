@@ -4,15 +4,19 @@ apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.zl.dafeng"
         minSdkVersion 18
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
     buildTypes {
         release {
@@ -33,21 +37,19 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.2.1'
-
     compile 'com.android.support:cardview-v7:24.0.0'
     // 约束布局
     /**
-     * 依赖注入
+     *  依赖注入
      */
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-
     /**
-     * 网络请求
+     *  网络请求
      */
     compile 'com.google.code.gson:gson:2.7'
     compile 'io.reactivex:rxjava:1.1.6'
@@ -63,34 +65,41 @@ dependencies {
     compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.4'
     // 不错的RecyclerViewAdapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.8.0'
-
     compile 'com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE'
     // 视频框架
     compile 'fm.jiecao:jiecaovideoplayer:5.4'
     /**
-     * 图片加载
+     *  图片加载
      */
     compile 'com.facebook.fresco:fresco:0.12.0'
-    // 在 API < 14 上的机器支持 WebP 时，需要添加
-    compile 'com.facebook.fresco:animated-base-support:0.12.0'
-    // 支持 GIF 动图，需要添加
-    compile 'com.facebook.fresco:animated-gif:0.12.0'
-    // 支持 WebP （静态图+动图），需要添加
-    compile 'com.facebook.fresco:animated-webp:0.12.0'
-    compile 'com.facebook.fresco:webpsupport:0.12.0'
-    // 仅支持 WebP 静态图，需要添加
-    compile 'com.facebook.fresco:webpsupport:0.12.0'
+//    // 在 API < 14 上的机器支持 WebP 时，需要添加
+//    compile 'com.facebook.fresco:animated-base-support:0.12.0'
+//    // 支持 GIF 动图，需要添加
+//    compile 'com.facebook.fresco:animated-gif:0.12.0'
+//    // 支持 WebP （静态图+动图），需要添加
+//    compile 'com.facebook.fresco:animated-webp:0.12.0'
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
+//    // 仅支持 WebP 静态图，需要添加
+//    compile 'com.facebook.fresco:webpsupport:0.12.0'
     // Glide图片加载
     compile 'com.github.bumptech.glide:glide:3.5.2'
-
     /**
-     * FlycoTabLayout 轮子
+     *  FlycoTabLayout 轮子
      */
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
-    compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
+    compile 'com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar'
     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
-
     compile 'com.alibaba:fastjson:1.1.56.android'
     // Log日志打印
     compile 'com.orhanobut:logger:1.15'
+    // bugly sdk & ndk
+//    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile files('libs/Baidu_MobAds_SDK.jar')
+
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    //bmob-sdk
+    compile 'cn.bmob.android:bmob-sdk:3.5.3'
 }

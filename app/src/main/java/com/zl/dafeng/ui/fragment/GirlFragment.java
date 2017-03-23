@@ -47,7 +47,7 @@ import okhttp3.ResponseBody;
 
 
 @SuppressLint("ValidFragment")
-public class HomeFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
+public class GirlFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
 
     @BindView(R.id.left_text)
     TextView leftText;

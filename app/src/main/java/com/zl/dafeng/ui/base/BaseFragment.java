@@ -51,4 +51,5 @@ public abstract class BaseFragment extends Fragment {
             unbinder.unbind();
         }
     }
+
 }
