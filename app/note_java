@@ -1,0 +1,14 @@
+map.put("key","value");
+map.put(null,"value2");
+map.put(null,"ha");
+map.put(null,null);
+map.put("key3",null);
+map.put("key4","value4");
+String key,value;
+Iterator iterator = map.entrySet().iterator();
+while (iterator.hasNext()){
+    Map.Entry entry = (Map.Entry) iterator.next();
+    key = entry.getKey().toString();
+    value = entry.getValue().toString();
+}
+注：Map的key和value 都可为null。

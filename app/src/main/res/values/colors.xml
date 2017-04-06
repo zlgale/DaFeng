@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
+    <color name="colorControlNormal">#29A0F6</color>
+    <color name="colorControlActivated">#29A0F6</color>
+    <color name="colorControlHighlight">#29A0F6</color>
 
     <color name="statusbar_color">#14619C</color>
     <color name="toolbar_color">#29A0F6</color>
+    <color name="button_color">#29A0F6</color>
     <color name="container_background">#EBEBEB</color>
 
     <color name="bottom_background">#F4F5F6</color>

@@ -34,6 +34,16 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+    //删除META-INF信息
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.properties'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.properties'
+        exclude 'META-INF/maven/com.google.code.gson/gson/pom.xml'
+        exclude 'META-INF/maven/com.google.code.gson/gson/pom.properties'
+    }
 }
 
 dependencies {
@@ -52,8 +62,7 @@ dependencies {
      *  网络请求
      */
     compile 'com.google.code.gson:gson:2.7'
-    compile 'io.reactivex:rxjava:1.1.6'
-    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
@@ -102,4 +111,7 @@ dependencies {
 
     //bmob-sdk
     compile 'cn.bmob.android:bmob-sdk:3.5.3'
+
+    // 水波纹点击
+    compile 'com.balysv:material-ripple:1.0.2'
 }

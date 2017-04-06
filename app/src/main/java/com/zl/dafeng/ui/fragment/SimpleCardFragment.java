@@ -68,12 +68,13 @@ public class SimpleCardFragment extends BaseFragment {
         ChannelMap.put("汽车", CpuInfoManager.CHANNEL_AUTOMOTIVE);
         ChannelMap.put("房产", CpuInfoManager.CHANNEL_HOUSE);
         ChannelMap.put("热点", CpuInfoManager.CHANNEL_HOTSPOT);
+//        showSelectedCpuWebPage();
     }
 
     @Override
     protected void initView() {
 //        cardTitleTv.setText(mTitle);
-        showSelectedCpuWebPage();
+
     }
 
     /**
@@ -95,14 +96,6 @@ public class SimpleCardFragment extends BaseFragment {
     @Subscribe
     public void onEventMainThread(MyEvenbus event) {
         String eventMsg = event.getmMsg();
-//        Toast.makeText(getActivity(), eventMsg, Toast.LENGTH_SHORT).show();
-//        Log.d("log", "onEventMainThread：" + event.getmMsg());
-        // mainactivity 初始化时触发，监听viewpager是否可以滑动
-//        if (eventMsg.equals("initSlide")) {
-//            if (sspWebview.canGoBack()) {
-//                EventBus.getDefault().post(new MyEvenbus("noslide"));
-//            }
-//        }
         // mainactivity 物理返回键的触发
         if (eventMsg.equals("back")) {
             if (sspWebview.canGoBack()) {
@@ -146,7 +139,7 @@ public class SimpleCardFragment extends BaseFragment {
      *
      * @return
      */
-    private int getChannel() {
+    private Integer getChannel() {
         return ChannelMap.get(mTitle);
     }
 

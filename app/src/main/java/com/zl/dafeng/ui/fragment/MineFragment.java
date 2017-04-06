@@ -16,6 +16,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.tencent.bugly.beta.Beta;
 import com.zl.dafeng.R;
 import com.zl.dafeng.service.interfaces.AppBarStateChangeListener;
+import com.zl.dafeng.ui.activity.LoginActivity;
 import com.zl.dafeng.ui.activity.MineActivity;
 import com.zl.dafeng.ui.base.BaseFragment;
 import com.zl.dafeng.ui.widgetview.WindSnowView;
@@ -126,7 +127,7 @@ public class MineFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.my_head:
-                startActivity(new Intent(getActivity(), MineActivity.class));
+                startActivity(new Intent(getActivity(), LoginActivity.class));
                 break;
             case R.id.fragment_mine_right_text:
                 startActivity(new Intent(getActivity(), MineActivity.class));

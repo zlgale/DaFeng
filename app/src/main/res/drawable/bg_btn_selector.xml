@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright (C) 2015. Keegan小钢（http://keeganlee.me）
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +14,7 @@
   limitations under the License.
   -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="500" android:exitFadeDuration="500">
-    <!-- 当前窗口失去焦点时 -->
-    <item android:drawable="@drawable/bg_btn_lost_window_focused" android:state_window_focused="false" />
+
     <!-- 不可用时 -->
     <item android:drawable="@drawable/bg_btn_disable" android:state_enabled="false" />
     <!-- 按压时 -->
@@ -27,4 +25,6 @@
     <item android:drawable="@drawable/bg_btn_activated" android:state_activated="true" />
     <!-- 默认时 -->
     <item android:drawable="@drawable/bg_btn_normal" />
+    <!-- 当前窗口失去焦点时 -->
+    <item android:drawable="@drawable/bg_btn_lost_window_focused" android:state_window_focused="false" />
 </selector>
